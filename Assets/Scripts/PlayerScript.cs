@@ -18,7 +18,7 @@ public class PlayerScript : MonoBehaviour
     {
         //bool moved = false;
 
-        if (Input.GetKey(KeyCode.W))
+        if (Input.GetKey(KeyCode.W) && transform.position.y <= 4.7)
         {
             //body.MovePosition(transform.position + new Vector3(speed, 0, 0));
             body.AddForce(new Vector2(0, speed), ForceMode2D.Force);
@@ -32,7 +32,7 @@ public class PlayerScript : MonoBehaviour
             //moved = true;
         }
 
-        if (Input.GetKey(KeyCode.S))
+        if (Input.GetKey(KeyCode.S) && transform.position.y >= -4.7)
         {
             //body.MovePosition(transform.position + new Vector3(speed, 0, 0));
             body.AddForce(new Vector2(0, -speed), ForceMode2D.Force);
