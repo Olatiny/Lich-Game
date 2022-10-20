@@ -45,10 +45,5 @@ public class PlayerScript : MonoBehaviour
             body.AddForce(new Vector2(speed, 0), ForceMode2D.Force);
             //moved = true;
         }
-
-        //if (!moved)
-        {
-            //  body.velocity = Vector2.zero;
-        }
     }
 }
