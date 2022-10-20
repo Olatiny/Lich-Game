@@ -62,6 +62,7 @@ public class GameManager : MonoBehaviour
         fallSpeed = 0f;
         gameStarted = false;
         UnPause();
+        menuMan.OpenStartMenu();
         //Respawn player
         //do the camera reset stuff
         //reset level
