@@ -4,18 +4,26 @@ using UnityEngine;
 
 public class PathScript : MonoBehaviour
 {
-    GameObject leftWall;
-    GameObject rightWall;
+    [SerializeField] GameObject otherPath;
 
-    // Start is called before the first frame update
-    void Start()
+    private void OnCollisionExit2D(Collision2D collision)
     {
-        leftWall = GetComponent<GameObject>();
+        Debug.Log("here");
     }
 
-    // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
+        transform.position += new Vector3(0, 13 * Time.fixedDeltaTime, 0);
+
+        //if (!GetComponent<Renderer>().isVisible)
+        //{
+        //    Debug.Log("here");
+        //    transform.position = otherPath.transform.position - new Vector3(0, 12, 0);
+        //}
         
+        //if (otherPath.transform.position.y >= -4.7f)
+        //{
+        //    transform.position = new Vector3(transform.position.x, -4.7f, transform.position.z);
+        //}
     }
 }
