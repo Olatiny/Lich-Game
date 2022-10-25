@@ -21,7 +21,7 @@ public class GameManager : MonoBehaviour
     /**if the game is currently paused*/
     [SerializeField] private bool paused;
     private bool canPause = true;
-    [SerializeField]public enum gameState {menu, falling, loot_room};
+    [SerializeField]public enum gameState {menu, falling, loot_room, die};
     [SerializeField]public gameState currentState;
     
     private int score = 0;
