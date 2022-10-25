@@ -63,6 +63,6 @@ public class MenuManager : MonoBehaviour
 
     public void StartGame(){
         CloseStartMenu();
-        GameManager.Instance.StartFalling();
+        GameManager.Instance.StartGame();
     }
 }

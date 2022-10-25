@@ -25,6 +25,12 @@ public class GameManager : MonoBehaviour
     [SerializeField]public gameState currentState;
     
     private int score = 0;
+    [Header("camera fields")]
+    [SerializeField][Tooltip("The main game camera")]private GameObject gameCamera;
+    [SerializeField][Tooltip("the starting rotation of the camera")]private Quaternion startingRotation;
+    [SerializeField][Tooltip("the primary rotation for the camera to reach")]private Quaternion finalRotation;
+    [SerializeField][Tooltip("the total time it should take the camera to rotate")]private float rotateTime = 1000f;
+
     [Header("manager fields")]
     [SerializeField][Tooltip("the menu manager object")]private MenuManager menuMan;
     [Tooltip("Current Game Manager")]
@@ -63,6 +69,8 @@ public class GameManager : MonoBehaviour
         gameStarted = false;
         UnPause();
         menuMan.OpenStartMenu();
+        gameCamera.GetComponent<CameraScript>().SetRotation(startingRotation);
+
         //Respawn player
         //do the camera reset stuff
         //reset level
@@ -77,15 +85,21 @@ public class GameManager : MonoBehaviour
         InitializeScene();
     }
 
-    public void StartFalling(){
+    public void StartGame(){
 
         //play game start scene
         //rotate camera
+        Debug.Log("start falling");
+        
+        StartCoroutine(Camera.main.GetComponent<CameraScript>().StartRotate(finalRotation, rotateTime));
+        Invoke("StartFalling", rotateTime);
+    }
 
+    private void StartFalling(){
         fallSpeed = startingFallSpeed;
         ChangeState(gameState.falling);
-        
     }
+
 
     public void TogglePause(){
         if(paused){

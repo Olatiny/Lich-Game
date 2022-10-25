@@ -311,6 +311,9 @@ MonoBehaviour:
   gameStarted: 0
   paused: 0
   currentState: 0
+  gameCamera: {fileID: 0}
+  startingRotation: {x: 0, y: 0, z: 0, w: 0}
+  finalRotation: {x: 0, y: 0, z: 0, w: 0}
   menuMan: {fileID: 528988174}
 --- !u!4 &1124779180
 Transform:
