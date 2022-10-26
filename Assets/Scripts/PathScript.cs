@@ -6,13 +6,24 @@ public class PathScript : MonoBehaviour
 {
     [SerializeField] GameObject otherPath;
 
-    private void OnCollisionExit2D(Collision2D collision)
+    //private void OnCollisionExit2D(Collision2D collision)
+    //{
+    //    Debug.Log("here");
+    //}
+
+    //private void OnCollisionExit2D(Collision2D collision)
+    //{
+    //    Debug.Log("here");
+    //}
+
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("here");
+        Debug.Log("trigger!");
     }
 
     void FixedUpdate()
     {
+        //Debug.Log("updating!");
         transform.position += new Vector3(0, 13 * Time.fixedDeltaTime, 0);
 
         //if (!GetComponent<Renderer>().isVisible)
