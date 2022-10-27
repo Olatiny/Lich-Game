@@ -55,10 +55,12 @@ MonoBehaviour:
   gameCamera: {fileID: 0}
   startingRotation: {x: 0, y: 0, z: 0.70710677, w: -0.70710677}
   finalRotation: {x: 0, y: 0, z: 0, w: 1}
+  playerMenuStartPos: {x: 0, y: 0, z: 0}
   playerStartPos: {x: 0, y: 0, z: 0}
   rotateTime: 1
   playerMoveTime: 1.7
   menuMan: {fileID: 5525250387895889319}
+  player: {fileID: 0}
 --- !u!1 &5525250388491001959
 GameObject:
   m_ObjectHideFlags: 0
@@ -472,9 +474,25 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5525250387867467858}
     m_Modifications:
+    - target: {fileID: 1014112166758805358, guid: 152c916d851e4974584c4f1014162978, type: 3}
+      propertyPath: m_UiScaleMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1014112166758805358, guid: 152c916d851e4974584c4f1014162978, type: 3}
+      propertyPath: m_MatchWidthOrHeight
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 1014112167900863298, guid: 152c916d851e4974584c4f1014162978, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1014112167900863303, guid: 152c916d851e4974584c4f1014162978, type: 3}
+      propertyPath: m_UiScaleMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1014112167900863303, guid: 152c916d851e4974584c4f1014162978, type: 3}
+      propertyPath: m_MatchWidthOrHeight
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 1014112168143262182, guid: 152c916d851e4974584c4f1014162978, type: 3}
       propertyPath: gameOverCanvas
@@ -535,6 +553,22 @@ PrefabInstance:
     - target: {fileID: 1014112168143262201, guid: 152c916d851e4974584c4f1014162978, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1014112168429769673, guid: 152c916d851e4974584c4f1014162978, type: 3}
+      propertyPath: m_UiScaleMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1014112168429769673, guid: 152c916d851e4974584c4f1014162978, type: 3}
+      propertyPath: m_MatchWidthOrHeight
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2732536746150829178, guid: 152c916d851e4974584c4f1014162978, type: 3}
+      propertyPath: m_UiScaleMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2732536746150829178, guid: 152c916d851e4974584c4f1014162978, type: 3}
+      propertyPath: m_MatchWidthOrHeight
+      value: 0.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 152c916d851e4974584c4f1014162978, type: 3}
