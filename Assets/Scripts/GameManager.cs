@@ -29,10 +29,15 @@ public class GameManager : MonoBehaviour
     [SerializeField][Tooltip("The main game camera")]private GameObject gameCamera;
     [SerializeField][Tooltip("the starting rotation of the camera")]private Quaternion startingRotation;
     [SerializeField][Tooltip("the primary rotation for the camera to reach")]private Quaternion finalRotation;
+    [SerializeField][Tooltip("the position for the player on the main menu")]private Vector3 playerMenuStartPos;
+    [SerializeField][Tooltip("the positions where the player starts after the game begins")]private Vector3 playerStartPos;
     [SerializeField][Tooltip("the total time it should take the camera to rotate")]private float rotateTime = 1000f;
+    [SerializeField][Tooltip("the total time it should take the player to move to their start position")]private float playerMoveTime = 1000f;
 
     [Header("manager fields")]
     [SerializeField][Tooltip("the menu manager object")]private MenuManager menuMan;
+    [SerializeField] private GameObject player;
+
     [Tooltip("Current Game Manager")]
     private static GameManager _instance;
     public static GameManager Instance
@@ -66,10 +71,13 @@ public class GameManager : MonoBehaviour
     void InitializeScene(){
         ChangeState(gameState.menu);
         fallSpeed = 0f;
+        score = 0;
         gameStarted = false;
         UnPause();
         menuMan.OpenStartMenu();
         gameCamera.GetComponent<CameraScript>().SetRotation(startingRotation);
+        player.transform.position = playerMenuStartPos;
+        player.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
 
         //Respawn player
         //do the camera reset stuff
@@ -90,9 +98,14 @@ public class GameManager : MonoBehaviour
         //play game start scene
         //rotate camera
         Debug.Log("start falling");
+         StartCoroutine(Camera.main.GetComponent<CameraScript>().StartMove(playerStartPos, playerMoveTime));
+        Invoke("StartRotate", (playerMoveTime));
         
+    }
+
+    private void StartRotate(){
         StartCoroutine(Camera.main.GetComponent<CameraScript>().StartRotate(finalRotation, rotateTime));
-        Invoke("StartFalling", rotateTime);
+        Invoke("StartFalling", (rotateTime));
     }
 
     private void StartFalling(){
@@ -130,6 +143,8 @@ public class GameManager : MonoBehaviour
         if(!paused){
             if(currentState == gameState.falling){
                 fallSpeed += fallAcceleration * Time.fixedDeltaTime;
+                score += 1;
+                menuMan.UpdateScore(score);
             }
         }
     }
@@ -187,5 +202,22 @@ public class GameManager : MonoBehaviour
             return 0;
         }
         return fallSpeed;
+    }
+
+    public void Die(){
+        ChangeState(gameState.die);
+        menuMan.OpenGameOverMenu();
+    }
+
+    public int GetScore(){
+        return score;
+    }
+
+    public void TookDamage(int currentHealth, int damageTaken){
+        menuMan.TookDamage(currentHealth,damageTaken);
+    }
+
+    public void GainedHealth(int currentHealth, int healthGained){
+        menuMan.GainedHealth(currentHealth,healthGained);
     }
 }
