@@ -77,6 +77,7 @@ public class GameManager : MonoBehaviour
         menuMan.OpenStartMenu();
         gameCamera.GetComponent<CameraScript>().SetRotation(startingRotation);
         player.transform.position = playerMenuStartPos;
+        player.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
 
         //Respawn player
         //do the camera reset stuff
@@ -205,9 +206,18 @@ public class GameManager : MonoBehaviour
 
     public void Die(){
         ChangeState(gameState.die);
+        menuMan.OpenGameOverMenu();
     }
 
     public int GetScore(){
         return score;
+    }
+
+    public void TookDamage(int currentHealth, int damageTaken){
+        menuMan.TookDamage(currentHealth,damageTaken);
+    }
+
+    public void GainedHealth(int currentHealth, int healthGained){
+        menuMan.GainedHealth(currentHealth,healthGained);
     }
 }
