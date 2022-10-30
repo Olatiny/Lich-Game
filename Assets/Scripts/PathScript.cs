@@ -13,7 +13,7 @@ public class PathScript : MonoBehaviour
     public GameObject GetLevelSegment()
     {
         //paths.Count - 1
-        return paths[Random.Range(0, 0)];
+        return paths[0];
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -22,7 +22,11 @@ public class PathScript : MonoBehaviour
         {
             name = "Old Path";
 
-            GameObject re = Instantiate(thisPath, new Vector2(transform.position.x, thisPath.transform.GetChild(2).transform.position.y), thisPath.transform.rotation);
+            GameObject newObj = GetLevelSegment();
+
+            newObj.GetComponent<PathScript>().spawn = spawn;
+
+            GameObject re = Instantiate(newObj, new Vector2(transform.position.x, thisPath.transform.GetChild(2).transform.position.y), thisPath.transform.rotation);
 
             re.name = "New Path";
         }
