@@ -85,7 +85,6 @@ public class MusicScript : MonoBehaviour
         music.volume = 0.3f;
         music.Play();
 
-
     }
 
     public void DieMusic()
