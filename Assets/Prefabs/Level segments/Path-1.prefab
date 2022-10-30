@@ -288,7 +288,9 @@ MonoBehaviour:
   thisPath: {fileID: 5590528295358134765}
   spawn: {fileID: 4536741530284030760, guid: 9ce02ca34f404f94da5284f81e45a5dd, type: 3}
   offset: 0
-  paths: []
+  paths:
+  - {fileID: 5590528295358134765}
+  - {fileID: 276143377864628932, guid: e1d7ed75e6469b44a947c2b6b71e2e79, type: 3}
 --- !u!61 &5590528295358134762
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -5,14 +5,17 @@ using UnityEngine;
 public class PlayerScript : MonoBehaviour
 {
     [SerializeField] Camera cam;
+    [SerializeField] GameObject spawn;
 
     Rigidbody2D body;
+    //Rigidbody2D spawnBody;
     private int speed = 500;
 
     // Start is called before the first frame update
     void Start()
     {
         body = GetComponent<Rigidbody2D>();
+        //spawnBody = spawn.GetComponent<Rigidbody2D>();
     }
 
     //private void OnTriggerEnter2D(Collider2D collision)
@@ -35,10 +38,13 @@ public class PlayerScript : MonoBehaviour
             return;
         }
 
+        spawn.transform.position = new Vector3(transform.position.x, spawn.transform.position.y, spawn.transform.position.z);
+
         if (Input.GetKey(KeyCode.W) && transform.position.y <= 1.5)
         {
             //body.MovePosition(transform.position + new Vector3(speed, 0, 0));
             body.AddForce(new Vector2(0, speed), ForceMode2D.Force);
+            //spawnBody.AddForce(new Vector2(0, speed), ForceMode2D.Force);
             //moved = true;
         }
 
@@ -46,6 +52,7 @@ public class PlayerScript : MonoBehaviour
         {
             //body.MovePosition(transform.position + new Vector3(-speed, 0, 0));
             body.AddForce(new Vector2(-speed, 0), ForceMode2D.Force);
+            //spawnBody.AddForce(new Vector2(-speed, 0), ForceMode2D.Force);
             //moved = true;
         }
 
@@ -53,6 +60,7 @@ public class PlayerScript : MonoBehaviour
         {
             //body.MovePosition(transform.position + new Vector3(speed, 0, 0));
             body.AddForce(new Vector2(0, -speed), ForceMode2D.Force);
+            //spawnBody.AddForce(new Vector2(0, -speed), ForceMode2D.Force);
             //moved = true;
         }
 
@@ -60,21 +68,24 @@ public class PlayerScript : MonoBehaviour
         {
             //body.MovePosition(transform.position + new Vector3(speed, 0, 0));
             body.AddForce(new Vector2(speed, 0), ForceMode2D.Force);
+            //spawnBody.AddForce(new Vector2(speed, 0), ForceMode2D.Force);
             //moved = true;
         }
 
-        if (transform.position.x <= cam.transform.position.x - 5)
-        {
-            //cam.GetComponent<Rigidbody2D>().AddForce(new Vector2(-speed, 0), ForceMode2D.Force);
-            cam.transform.position = new Vector3(transform.position.x, transform.position.y, cam.transform.position.z);
-        } else if (transform.position.x >= cam.transform.position.x + 5)
-        {
-            cam.transform.position = new Vector3(transform.position.x, transform.position.y, cam.transform.position.z);
-            //cam.GetComponent<Rigidbody2D>().AddForce(new Vector2(speed, 0), ForceMode2D.Force);
-        }
-        else
-        {
-            //cam.GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
-        }
+        cam.transform.position = new Vector3(transform.position.x, cam.transform.position.y, cam.transform.position.z);
+
+        //if (transform.position.x <= cam.transform.position.x - 5)
+        //{
+        //    //cam.GetComponent<Rigidbody2D>().AddForce(new Vector2(-speed, 0), ForceMode2D.Force);
+        //    cam.transform.position = new Vector3(transform.position.x, transform.position.y, cam.transform.position.z);
+        //} else if (transform.position.x >= cam.transform.position.x + 5)
+        //{
+        //    cam.transform.position = new Vector3(transform.position.x, transform.position.y, cam.transform.position.z);
+        //    //cam.GetComponent<Rigidbody2D>().AddForce(new Vector2(speed, 0), ForceMode2D.Force);
+        //}
+        //else
+        //{
+        //    //cam.GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
+        //}
     }
 }

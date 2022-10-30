@@ -13,22 +13,38 @@ public class PathScript : MonoBehaviour
     public GameObject GetLevelSegment()
     {
         //paths.Count - 1
-        return paths[0];
+        int idx = Random.Range(0, 2);
+        Debug.Log("Path: " + idx);
+        return paths[idx];
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.Equals(spawn))
+        if (collision.gameObject.name.Equals(spawn.transform.GetChild(0).name))
         {
-            name = "Old Path";
+            //name = "Old Path";
 
             GameObject newObj = GetLevelSegment();
 
-            newObj.GetComponent<PathScript>().spawn = spawn;
+            //newObj.GetComponent<PathScript>().spawn = spawn;
+            //newObj.GetComponent<PathScript>().paths = paths;
+            //newObj.GetComponent<PathScript>().offset = offset;
 
-            GameObject re = Instantiate(newObj, new Vector2(transform.position.x, thisPath.transform.GetChild(2).transform.position.y), thisPath.transform.rotation);
+            GameObject re = Instantiate(newObj, new Vector2(transform.position.x + offset, thisPath.transform.GetChild(2).transform.position.y), thisPath.transform.rotation);
 
-            re.name = "New Path";
+            re.GetComponent<PathScript>().offset = offset;
+            //Debug.Log(re.name);
+
+            if (re.name.Contains("Path-2(Clone)"))
+            {
+                //Debug.Log("p2");
+                re.GetComponent<PathScript>().offset += 18.13f;
+            } if (re.name.Contains("Path-1(Clone)"))
+            {
+                re.GetComponent<PathScript>().offset = 0;
+            }
+
+            //re.name = "New Path";
         }
     }
 
