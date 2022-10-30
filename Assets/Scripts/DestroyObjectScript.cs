@@ -6,7 +6,7 @@ public class DestroyObjectScript : MonoBehaviour
 {
     [SerializeField] GameObject parent;
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.gameObject.name.Equals("Spawn"))
         {

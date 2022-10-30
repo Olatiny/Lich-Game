@@ -5,52 +5,33 @@ using UnityEngine;
 public class PathScript : MonoBehaviour
 {
     [SerializeField] GameObject thisPath;
+    [SerializeField] GameObject spawn;
+    [SerializeField] float offset;
 
-    //private void OnCollisionExit2D(Collision2D collision)
-    //{
-    //    Debug.Log("here");
-    //}
+    [SerializeField] List<GameObject> paths;
 
-    //private void OnCollisionExit2D(Collision2D collision)
-    //{
-    //    Debug.Log("here");
-    //}
+    public GameObject GetLevelSegment()
+    {
+        //paths.Count - 1
+        return paths[Random.Range(0, 0)];
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        //Debug.Log("trigger!");
-
-        if (collision.gameObject.name.Equals("Spawn"))
+        if (collision.gameObject.Equals(spawn))
         {
-            //Debug.Log("trigger!");
+            name = "Old Path";
 
-            Transform t = transform;
+            GameObject re = Instantiate(thisPath, new Vector2(transform.position.x, thisPath.transform.GetChild(2).transform.position.y), thisPath.transform.rotation);
 
-            t.SetPositionAndRotation(thisPath.transform.GetChild(2).transform.position, thisPath.transform.rotation);
-
-            t.position = new Vector2(transform.position.x, t.position.y - 10);
-
-            Debug.Log(t);
-
-            Instantiate(thisPath, t);
+            re.name = "New Path";
         }
     }
 
     void FixedUpdate()
     {
         //Debug.Log("updating!");
-        transform.position += new Vector3(0, 13 * Time.fixedDeltaTime, 0);
-
-        //if (!GetComponent<Renderer>().isVisible)
-        //{
-        //    //Debug.Log("here");
-        //    //transform.position = otherPath.transform.position - new Vector3(0, 12, 0);
-        //    Destroy(thisPath);
-        //}
-
-        //if (otherPath.transform.position.y >= -4.7f)
-        //{
-        //    transform.position = new Vector3(transform.position.x, -4.7f, transform.position.z);
-        //}
+        //if (GameManager.Instance.)
+        transform.position += new Vector3(0, GameManager.Instance.GetFallSpeed() * Time.fixedDeltaTime, 0);
     }
 }
