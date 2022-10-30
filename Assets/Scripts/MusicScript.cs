@@ -13,6 +13,8 @@ public class MusicScript : MonoBehaviour
     public AudioClip fallingSong;
 
     public AudioClip deathCue; // all sfx will be played as oneshots through sfx
+    [SerializeField]
+    public List<AudioClip> healthCollect;
 
     // Start is called before the first frame update
     void Start()
@@ -27,7 +29,7 @@ public class MusicScript : MonoBehaviour
         // fade the ambience up VERY SLOW
         StartCoroutine(FadeAudioSource.StartFade(ambience, 3.5f, 0.15f)); // does nothing if it is already high
 
-        music.volume = 0.1f;
+        music.volume = 0.2f;
         music.clip = menuSong;
         music.Play();
     }
@@ -68,7 +70,7 @@ public class MusicScript : MonoBehaviour
     public void MenuMusic()
     {
         // fade the ambience up
-        StartCoroutine(FadeAudioSource.StartFade(ambience, 2f, 0.15f)); // does nothing if it is already high
+        StartCoroutine(FadeAudioSource.StartFade(ambience, 2f, 0.17f)); // does nothing if it is already high
 
         music.clip = menuSong;
         music.Play();
@@ -80,9 +82,8 @@ public class MusicScript : MonoBehaviour
         StartCoroutine(FadeAudioSource.StartFade(ambience, 2f, 0.07f));
 
         music.clip = fallingSong;
+        music.volume = 0.3f;
         music.Play();
-
-        //ambience.Pause();
 
     }
 
@@ -92,8 +93,14 @@ public class MusicScript : MonoBehaviour
 
         // fade the ambience back up
         StartCoroutine(FadeAudioSource.StartFade(ambience, 2f, 0.15f));
-        // then play the death cue
-        sfx.PlayOneShot(deathCue, 0.1f);
+        
+        // AND play the death cue
+        sfx.PlayOneShot(deathCue, 0.2f);
+    }
+
+    public void HealthSFX()
+    {
+        sfx.PlayOneShot(healthCollect[UnityEngine.Random.Range(0, healthCollect.Count)]);
     }
 }
 
@@ -116,4 +123,5 @@ public static class FadeAudioSource
         }
         yield break;
     }
+
 }
