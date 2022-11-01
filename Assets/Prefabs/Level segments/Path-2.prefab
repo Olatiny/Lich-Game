@@ -519,6 +519,14 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5590528295358134763, guid: e6c8445570939644eba25049a0d9c4a0, type: 3}
+      propertyPath: offset
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5590528295358134763, guid: e6c8445570939644eba25049a0d9c4a0, type: 3}
+      propertyPath: paths.Array.data[1]
+      value: 
+      objectReference: {fileID: 276143377864628932}
     - target: {fileID: 5590528295358134764, guid: e6c8445570939644eba25049a0d9c4a0, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -613,6 +621,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e6c8445570939644eba25049a0d9c4a0, type: 3}
+--- !u!1 &276143377864628932 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5590528295358134765, guid: e6c8445570939644eba25049a0d9c4a0, type: 3}
+  m_PrefabInstance: {fileID: 5638653162713113385}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &276143377864628933 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5590528295358134764, guid: e6c8445570939644eba25049a0d9c4a0, type: 3}
