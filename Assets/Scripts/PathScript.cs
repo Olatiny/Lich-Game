@@ -4,26 +4,54 @@ using UnityEngine;
 
 public class PathScript : MonoBehaviour
 {
-    [SerializeField] GameObject otherPath;
+    [SerializeField] GameObject thisPath;
+    [SerializeField] GameObject spawn;
+    [SerializeField] float offset;
 
-    private void OnCollisionExit2D(Collision2D collision)
+    [SerializeField] List<GameObject> paths;
+
+    public GameObject GetLevelSegment()
     {
-        Debug.Log("here");
+        //paths.Count - 1
+        int idx = Random.Range(0, 4);
+        //Debug.Log("Path: " + idx);
+        return paths[idx];
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.name.Equals(spawn.transform.GetChild(0).name))
+        {
+            //name = "Old Path";
+
+            GameObject newObj = GetLevelSegment();
+
+            //newObj.GetComponent<PathScript>().spawn = spawn;
+            //newObj.GetComponent<PathScript>().paths = paths;
+            //newObj.GetComponent<PathScript>().offset = offset;
+
+            GameObject re = Instantiate(newObj, transform.GetChild(2).position, thisPath.transform.rotation);
+
+            re.GetComponent<PathScript>().offset = offset;
+            //Debug.Log(re.name);
+
+            //if (re.name.Contains("Path-2(Clone)"))
+            //{
+            //    //Debug.Log("p2");
+            //    re.GetComponent<PathScript>().offset += 18.13f;
+            //} if (re.name.Contains("Path-1(Clone)"))
+            //{
+            //    re.GetComponent<PathScript>().offset = 0;
+            //}
+
+            //re.name = "New Path";
+        }
     }
 
     void FixedUpdate()
     {
-        transform.position += new Vector3(0, 13 * Time.fixedDeltaTime, 0);
-
-        //if (!GetComponent<Renderer>().isVisible)
-        //{
-        //    Debug.Log("here");
-        //    transform.position = otherPath.transform.position - new Vector3(0, 12, 0);
-        //}
-        
-        //if (otherPath.transform.position.y >= -4.7f)
-        //{
-        //    transform.position = new Vector3(transform.position.x, -4.7f, transform.position.z);
-        //}
+        //Debug.Log("updating!");
+        //if (GameManager.Instance.)
+        transform.position += new Vector3(0, GameManager.Instance.GetFallSpeed() * Time.fixedDeltaTime, 0);
     }
 }
