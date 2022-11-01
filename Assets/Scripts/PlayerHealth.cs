@@ -26,7 +26,7 @@ public class PlayerHealth : MonoBehaviour
     }
 
     public void SetHealth(int newHealth){
-        currentHealth = newHealth;
+        currentHealth = Mathf.Min(newHealth,maxHealth);
     }
 
     public void RestoreHealth(int healthIncrease){

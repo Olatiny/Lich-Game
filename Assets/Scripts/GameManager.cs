@@ -9,7 +9,9 @@ public class GameManager : MonoBehaviour
     
 
     [SerializeField][Tooltip("a list of the names of all of the relics")]private List<string> relicNames;
+    [SerializeField][Tooltip("a list of the names of all of the relics")]private List<GameObject> relicObjects;
     [SerializeField][Tooltip("a map of all relics and if they've been found. 0 = not found, 1 = found")]private Dictionary<string,int> relics;
+    [SerializeField][Tooltip("a map of all relics and if they've been found. 0 = not found, 1 = found")]private Dictionary<string,GameObject> relicObjectsMap;
     
     [Header("falling fields")]
     [SerializeField][Tooltip("current falling speed")]public float fallSpeed;
@@ -38,7 +40,9 @@ public class GameManager : MonoBehaviour
     [Header("manager fields")]
     [SerializeField][Tooltip("the menu manager object")]private MenuManager menuMan;
     [SerializeField][Tooltip("the player particles script")]private CharacterParticles charParts;
+    [SerializeField][Tooltip("the item spawner")]private ItemSpawner itemSpawn;
     [SerializeField] private GameObject player;
+    [SerializeField] private GameObject killZone;
 
     [Tooltip("Current Game Manager")]
     private static GameManager _instance;
@@ -71,6 +75,7 @@ public class GameManager : MonoBehaviour
     }
     
     void InitializeScene(){
+        killZone.SetActive(false);
         ChangeState(gameState.menu);
         rotating = false;
         fallSpeed = 0f;
@@ -83,6 +88,9 @@ public class GameManager : MonoBehaviour
         player.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
         if(charParts){
             charParts.Reset();
+        }
+        if(itemSpawn){
+            itemSpawn.StopFalling();
         }
         //Respawn player
         //do the camera reset stuff
@@ -97,8 +105,10 @@ public class GameManager : MonoBehaviour
     {
         InitializeScene();
         relics = new Dictionary<string, int>();
+        relicObjectsMap = new Dictionary<string, GameObject>();
         for(int i = 0; i < relicNames.Count; i++){
-            relics.Add(relicNames[i],i);
+            relics.Add(relicNames[i],0);
+            relicObjectsMap.Add(relicNames[i],relicObjects[i]);
         }
     }
 
@@ -131,11 +141,18 @@ public class GameManager : MonoBehaviour
         if(charParts){
             charParts.StartFalling();
         }
+        if(itemSpawn){
+            itemSpawn.StartFalling();
+        }
         rotating = false;
+        killZone.SetActive(true);
     }
 
 
     public void TogglePause(){
+        if(!canPause){
+            return;
+        }
         if(paused){
             UnPause();
         }
@@ -213,6 +230,7 @@ public class GameManager : MonoBehaviour
             charParts.GainedRelic();
         }
         inDialog = true;
+        canPause = false;
         menuMan.GainedRelic(relic);
 
     }
@@ -275,6 +293,16 @@ public class GameManager : MonoBehaviour
 
     public void EndDialog(){
         inDialog = false;
+        canPause = true;
         menuMan.EndDialog();
+    }
+
+    public GameObject GetRelicToSpawn(){
+        foreach(string i in relicNames){
+            if(relics[i] == 0){
+                return relicObjectsMap[i];
+            }
+        }
+        return null;
     }
 }
