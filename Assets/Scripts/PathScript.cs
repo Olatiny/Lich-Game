@@ -13,8 +13,8 @@ public class PathScript : MonoBehaviour
     public GameObject GetLevelSegment()
     {
         //paths.Count - 1
-        int idx = Random.Range(0, 2);
-        Debug.Log("Path: " + idx);
+        int idx = Random.Range(0, 4);
+        //Debug.Log("Path: " + idx);
         return paths[idx];
     }
 
@@ -30,19 +30,19 @@ public class PathScript : MonoBehaviour
             //newObj.GetComponent<PathScript>().paths = paths;
             //newObj.GetComponent<PathScript>().offset = offset;
 
-            GameObject re = Instantiate(newObj, new Vector2(transform.position.x + offset, thisPath.transform.GetChild(2).transform.position.y), thisPath.transform.rotation);
+            GameObject re = Instantiate(newObj, transform.GetChild(2).position, thisPath.transform.rotation);
 
             re.GetComponent<PathScript>().offset = offset;
             //Debug.Log(re.name);
 
-            if (re.name.Contains("Path-2(Clone)"))
-            {
-                //Debug.Log("p2");
-                re.GetComponent<PathScript>().offset += 18.13f;
-            } if (re.name.Contains("Path-1(Clone)"))
-            {
-                re.GetComponent<PathScript>().offset = 0;
-            }
+            //if (re.name.Contains("Path-2(Clone)"))
+            //{
+            //    //Debug.Log("p2");
+            //    re.GetComponent<PathScript>().offset += 18.13f;
+            //} if (re.name.Contains("Path-1(Clone)"))
+            //{
+            //    re.GetComponent<PathScript>().offset = 0;
+            //}
 
             //re.name = "New Path";
         }

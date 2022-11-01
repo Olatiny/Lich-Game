@@ -35,8 +35,11 @@ public class PlayerScript : MonoBehaviour
         //bool moved = false;
         if (GameManager.Instance.fallSpeed == 0)
         {
+            GetComponent<Animator>().Play("PlayerStandingRight");
             return;
         }
+
+        GetComponent<Animator>().Play("Falling");
 
         spawn.transform.position = new Vector3(transform.position.x, spawn.transform.position.y, spawn.transform.position.z);
 
@@ -72,7 +75,7 @@ public class PlayerScript : MonoBehaviour
             //moved = true;
         }
 
-        cam.transform.position = new Vector3(transform.position.x, cam.transform.position.y, cam.transform.position.z);
+        //cam.transform.position = new Vector3(transform.position.x, cam.transform.position.y, cam.transform.position.z);
 
         //if (transform.position.x <= cam.transform.position.x - 5)
         //{
