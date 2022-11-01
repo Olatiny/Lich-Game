@@ -387,7 +387,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5525250387867467857, guid: a6a455b994ae96e46a298a47e3c0ca99, type: 3}
       propertyPath: startingFallSpeed
-      value: 7
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 5525250387867467857, guid: a6a455b994ae96e46a298a47e3c0ca99, type: 3}
       propertyPath: playerMenuStartPos.x
@@ -450,6 +450,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3495320200777901437, guid: e9f86d612d5502a4c8ebf7a3169c9cdd, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -6.501
+      objectReference: {fileID: 0}
+    - target: {fileID: 5800568609757873890, guid: e9f86d612d5502a4c8ebf7a3169c9cdd, type: 3}
+      propertyPath: m_Size.x
+      value: 5.904197
+      objectReference: {fileID: 0}
     - target: {fileID: 8574099664161474128, guid: e9f86d612d5502a4c8ebf7a3169c9cdd, type: 3}
       propertyPath: m_Name
       value: Foyer-Straight 2
@@ -464,7 +472,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8574099664161474129, guid: e9f86d612d5502a4c8ebf7a3169c9cdd, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 7.27
+      value: 5.56
       objectReference: {fileID: 0}
     - target: {fileID: 8574099664161474129, guid: e9f86d612d5502a4c8ebf7a3169c9cdd, type: 3}
       propertyPath: m_LocalPosition.z

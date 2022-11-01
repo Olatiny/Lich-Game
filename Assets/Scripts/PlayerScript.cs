@@ -75,7 +75,7 @@ public class PlayerScript : MonoBehaviour
             //moved = true;
         }
 
-        //cam.transform.position = new Vector3(transform.position.x, cam.transform.position.y, cam.transform.position.z);
+        cam.transform.position = new Vector3(transform.position.x, cam.transform.position.y, cam.transform.position.z);
 
         //if (transform.position.x <= cam.transform.position.x - 5)
         //{
