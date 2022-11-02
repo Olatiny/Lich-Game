@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &5035308469080684293
+--- !u!1 &5117153583288486894
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,40 +8,39 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 5035308469080684294}
-  - component: {fileID: 5035308469080684295}
-  - component: {fileID: 5035308469080684292}
-  - component: {fileID: 5035308469080684289}
-  - component: {fileID: -3855330836190499196}
-  m_Layer: 9
-  m_Name: Relic 1
+  - component: {fileID: 8276744406653935142}
+  - component: {fileID: 6256929819163639242}
+  - component: {fileID: 161080119739667916}
+  - component: {fileID: 863150555859437571}
+  m_Layer: 0
+  m_Name: Bone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &5035308469080684294
+--- !u!4 &8276744406653935142
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5035308469080684293}
+  m_GameObject: {fileID: 5117153583288486894}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7.05, y: 2.32, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -18.74283, y: 2.3855424, z: 0}
+  m_LocalScale: {x: 0.5142562, y: 0.5142562, z: 0.5142562}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &5035308469080684295
+--- !u!212 &6256929819163639242
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5035308469080684293}
+  m_GameObject: {fileID: 5117153583288486894}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -76,7 +75,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 81b6f1b103b191b49b8b8fba1dbc0471, type: 3}
+  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -87,54 +86,50 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!58 &5035308469080684292
-CircleCollider2D:
+--- !u!61 &161080119739667916
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5035308469080684293}
+  m_GameObject: {fileID: 5117153583288486894}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
   serializedVersion: 2
-  m_Radius: 0.5
---- !u!114 &5035308469080684289
-MonoBehaviour:
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
+--- !u!50 &863150555859437571
+Rigidbody2D:
+  serializedVersion: 4
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5035308469080684293}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3250b02551fc2674784350c3e1df9a6a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  relicName: Tattered Hat
-  relicLore: "You find a tattered backwards hat with blood stains on it. Stuffed
-    inside, you find part of a newspaper article that was torn off, it reads:  \tTHREE
-    MORE MISSING \tNovember 22, 2003 \tThree more missing persons cases in the town
-    of Pinecone arose over the weekend. Agness Bumble, age 29, Cassy Dawson, age
-    19, and John Statton, age 22, were all reported missing by family members or
-    friends. This creates a total number of twelve missing people from the small
-    town in the last year. The authorities are\u2026 (The rest of the article is
-    missing) "
-  playerTag: Player
---- !u!114 &-3855330836190499196
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5035308469080684293}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a4218bc3bcfa21d418ff0ad1734d695c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveSpeed: 3
+  m_GameObject: {fileID: 5117153583288486894}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0

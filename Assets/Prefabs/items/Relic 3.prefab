@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 5035308469080684289}
   - component: {fileID: -3855330836190499196}
   m_Layer: 9
-  m_Name: Relic 1
+  m_Name: Relic 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -76,7 +76,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 81b6f1b103b191b49b8b8fba1dbc0471, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 9df93bcb4b4cacf49ba62f7da4279bc3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -115,15 +115,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3250b02551fc2674784350c3e1df9a6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  relicName: Tattered Hat
-  relicLore: "You find a tattered backwards hat with blood stains on it. Stuffed
-    inside, you find part of a newspaper article that was torn off, it reads:  \tTHREE
-    MORE MISSING \tNovember 22, 2003 \tThree more missing persons cases in the town
-    of Pinecone arose over the weekend. Agness Bumble, age 29, Cassy Dawson, age
-    19, and John Statton, age 22, were all reported missing by family members or
-    friends. This creates a total number of twelve missing people from the small
-    town in the last year. The authorities are\u2026 (The rest of the article is
-    missing) "
+  relicName: VR Headset
+  relicLore: "You find a VR headset with the words \u201CHelm of Dreams\u201D written
+    on it. You find a tattered piece of newspaper stuck between some of the straps
+    that reads:  \tMISSING BOY \tSeptember 17, 2003 \tThe small town of Pinecone
+    was warped with worry this past weekend when one of the resident\u2019s children
+    mysteriously vanished from his home. The boy\u2019s name is Edwin Francis, age
+    7. His parents are frantic with fear that they will never see their child ever
+    again. According to his parents, Edwin was in his room after getting ready for
+    bed but wasn\u2019t there in the morning. His mother, Mrs. Francis, said \u201CWe
+    [Mr. and Mrs. Francis] made sure all of the doors were locked as usual. He isn\u2019t
+    the type to get up in the night, much less leave the house when it\u2019s dark
+    out.\u201D A search party has formed and has looked for Edwin all through the
+    West Forest last night. Tonight, they will look in the Cedar Forest after finishing
+    canvasing the fields surrounding the West Forest. If you want to join the search
+    party a check-in tent is located outside of town hall. The sheriff said \u201CEveryone
+    is working hard to bring Edwin home. If you see any suspicious activity or gain
+    any information about Edwin Francis\u2019 whereabouts, alert law enforcement
+    immediately. Make sure you keep yourselves safe, do not stay out after dark and
+    lock all doors and windows to your home. Parents, make sure you know where your
+    kids are and what they are doing. Everyone look out for each other during these
+    trying times.\u201D  "
   playerTag: Player
 --- !u!114 &-3855330836190499196
 MonoBehaviour:

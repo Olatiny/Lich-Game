@@ -33,11 +33,11 @@ public class PlayerScript : MonoBehaviour
     void FixedUpdate()
     {
         //bool moved = false;
-        if (GameManager.Instance.fallSpeed == 0)
-        {
-            GetComponent<Animator>().Play("PlayerStandingRight");
-            return;
-        }
+        // if (GameManager.Instance.fallSpeed == 0)
+        // {
+        //     GetComponent<Animator>().Play("PlayerStandingRight");
+        //     return;
+        // }
 
         //if (!GameManager.Instance.CanMove())
         //{
