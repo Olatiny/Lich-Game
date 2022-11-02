@@ -5,7 +5,6 @@ using UnityEngine;
 public class BoneScript : MonoBehaviour
 {
     public GameObject player;
-    public GameObject skeleton;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,10 +17,9 @@ public class BoneScript : MonoBehaviour
     void FixedUpdate()
     {
         gameObject.transform.Rotate(0, 0, 5, Space.Self);
-        gameObject.transform.position = new Vector3(gameObject.transform.position.x, skeleton.transform.position.y, gameObject.transform.position.z);
     }
 
-    public void OnCollisionEnter2D(Collision2D other) {
+    public void OnTriggerEnter2D(Collider2D other) {
         Die();
     }
     public void Die() {

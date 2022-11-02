@@ -12,7 +12,8 @@ GameObject:
   - component: {fileID: 5524810565866462990}
   - component: {fileID: 5524810565866462989}
   - component: {fileID: 5524810565866462984}
-  m_Layer: 0
+  - component: {fileID: 2771789787651278699}
+  m_Layer: 3
   m_Name: Skeleton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -75,7 +76,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
+  m_Sprite: {fileID: -2107897773, guid: 3452bffc29c594f40a35ba9ef03c0c3f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -98,7 +99,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1211d700414b7f499ae8b17990343b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shootSpeed: 900
+  shootSpeed: 200
   Bone: {fileID: 3006203948040552214, guid: ac2797091e305d64f8b8cea783b33b37, type: 3}
   averageTime: 1
   timeVariance: 0.5
@@ -124,3 +125,23 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!95 &2771789787651278699
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5524810565866462994}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: b6c0b45d5ef019743845c208327ab44b, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
