@@ -352,4 +352,8 @@ public class GameManager : MonoBehaviour
     public MusicScript GetMusMan(){
         return musScript;
     }
+
+    public GameObject GetPlayer(){
+        return player;
+    }
 }

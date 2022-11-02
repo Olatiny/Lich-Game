@@ -12,6 +12,7 @@ public class GhostScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        player = GameManager.Instance.GetPlayer();
         if (gameObject.transform.position.x > player.transform.position.x) {
             gameObject.transform.Rotate(0, 180, 0, Space.Self);
             facingLeft = true;
@@ -24,6 +25,9 @@ public class GhostScript : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        if(!GameManager.Instance.CanMove()){
+            return;
+        }
         gameObject.transform.position = Vector2.MoveTowards(gameObject.transform.position, player.transform.position, speed * Time.deltaTime);
         if (gameObject.transform.position.x > player.transform.position.x && !facingLeft) {
             gameObject.transform.Rotate(0, 180, 0, Space.Self);
