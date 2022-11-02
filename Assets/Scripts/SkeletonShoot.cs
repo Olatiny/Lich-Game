@@ -11,10 +11,14 @@ public class SkeletonShoot : MonoBehaviour
     public float averageTime = 1;
     public float timeVariance = 0.5f;
     public float elapsedTime = 0;
+    public GameObject player;
     // Start is called before the first frame update
     void Start()
     {
-
+        if (gameObject.transform.position.x > player.transform.position.x) {
+            gameObject.transform.Rotate(0, 180, 0, Space.Self);
+            shootSpeed *= -1;
+        }
     }
 
     // Update is called once per frame
