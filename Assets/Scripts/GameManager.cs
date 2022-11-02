@@ -18,6 +18,7 @@ public class GameManager : MonoBehaviour
     [SerializeField][Tooltip("the fall speed at the start of the game")]public float startingFallSpeed;
     [SerializeField][Tooltip("the rate at which the character fall speed increases per second")]public float fallAcceleration;
 
+
     [Header("game state fields")]
     [SerializeField]private bool inDialog;
     /**if the game is currently paused*/
@@ -95,7 +96,9 @@ public class GameManager : MonoBehaviour
             itemSpawn.StopFalling();
         }
         SpawnInObjects();
-        resLevScript.ResetLevel();
+        if(resLevScript){
+            resLevScript.ResetLevel();
+        }
         //Respawn player
         //do the camera reset stuff
         //reset level
@@ -348,5 +351,9 @@ public class GameManager : MonoBehaviour
 
     public MusicScript GetMusMan(){
         return musScript;
+    }
+
+    public GameObject GetPlayer(){
+        return player;
     }
 }
