@@ -39,6 +39,7 @@ public class GameManager : MonoBehaviour
 
     [Header("manager fields")]
     [SerializeField][Tooltip("the menu manager object")]private MenuManager menuMan;
+    [SerializeField][Tooltip("the music manager script")]private MusicScript musScript;
     [SerializeField][Tooltip("the player particles script")]private CharacterParticles charParts;
     [SerializeField][Tooltip("the item spawner")]private ItemSpawner itemSpawn;
     [SerializeField] private GameObject player;
@@ -131,6 +132,9 @@ public class GameManager : MonoBehaviour
         if(charParts){
             charParts.StartRotating();
         }
+        if(musScript){
+            musScript.FallRumble();
+        }
         Invoke("StartFalling", (rotateTime));
         
     }
@@ -143,6 +147,9 @@ public class GameManager : MonoBehaviour
         }
         if(itemSpawn){
             itemSpawn.StartFalling();
+        }
+        if(musScript){
+            musScript.FallScream();
         }
         rotating = false;
         killZone.SetActive(true);
@@ -164,13 +171,17 @@ public class GameManager : MonoBehaviour
     public void Pause(){
         paused = true;
             menuMan.OpenPauseMenu();
-            //maybe change
+            if(musScript){
+                musScript.PauseAdjust();
+            }
             Time.timeScale = 0f;
     }
     public void UnPause(){
         paused = false;
             menuMan.ClosePauseMenu();
-            //maybe change
+            if(musScript){
+                musScript.UnpauseAdjust();
+            }
             Time.timeScale = 1f;
     }
 
@@ -193,7 +204,7 @@ public class GameManager : MonoBehaviour
     }
 
     public void ChangeState(gameState newState){
-        //call audio manager with the new state
+        musScript.UpdateMusic(newState);
         currentState = newState;
     }
 
@@ -253,7 +264,9 @@ public class GameManager : MonoBehaviour
     }
 
     public void Die(){
-        ChangeState(gameState.die);
+        if(musScript){
+            ChangeState(gameState.die);
+        }
         menuMan.OpenGameOverMenu();
     }
 
@@ -266,6 +279,9 @@ public class GameManager : MonoBehaviour
         if(charParts){
             charParts.Hurt();
         }
+        if(musScript){
+            musScript.DamageSFX();
+        }
     }
 
     public void GainedHealth(int currentHealth, int healthGained){
@@ -273,6 +289,9 @@ public class GameManager : MonoBehaviour
         menuMan.GainedHealth(currentHealth,healthGained);
         if(charParts){
             charParts.GainedHealth();
+        }
+        if(musScript){
+            musScript.HealthSFX();
         }
     }
 
