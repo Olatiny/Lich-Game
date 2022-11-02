@@ -13,7 +13,8 @@ public class PathScript : MonoBehaviour
     public GameObject GetLevelSegment()
     {
         //paths.Count - 1
-        int idx = Random.Range(0, 4);
+        int idx = Random.Range(0, paths.Count);
+        //idx = paths.Count - 2;
         //Debug.Log("Path: " + idx);
         return paths[idx];
     }
@@ -30,7 +31,14 @@ public class PathScript : MonoBehaviour
             //newObj.GetComponent<PathScript>().paths = paths;
             //newObj.GetComponent<PathScript>().offset = offset;
 
-            GameObject re = Instantiate(newObj, transform.GetChild(2).position, thisPath.transform.rotation);
+            GameObject re;
+
+            if (name.Contains("Straight")) {
+                re = Instantiate(newObj, transform.GetChild(2).position, thisPath.transform.rotation);
+            } else
+            {
+                re = Instantiate(newObj, transform.GetChild(6).gameObject.GetComponent<PathTransitionScript>().WhichConnector().transform.position, thisPath.transform.rotation);
+            }
 
             re.GetComponent<PathScript>().offset = offset;
             //Debug.Log(re.name);
