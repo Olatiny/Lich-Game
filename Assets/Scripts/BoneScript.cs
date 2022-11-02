@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class BoneScript : MonoBehaviour
 {
-    public float killTime;
     public GameObject player;
     // Start is called before the first frame update
     void Start()
@@ -25,9 +24,5 @@ public class BoneScript : MonoBehaviour
     }
     public void Die() {
         Destroy(gameObject);
-    }
-    public IEnumerator Timer() {
-        yield return new WaitForSeconds(killTime);
-        Die();
     }
 }

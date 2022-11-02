@@ -5,12 +5,11 @@ using UnityEngine;
 public class SkeletonShoot : MonoBehaviour
 {
     public float shootSpeed;
-    public Transform shootPos;
+    private Transform shootPos;
     public GameObject Bone;
-    public float time;
+    private float time;
     public float averageTime = 1;
     public float timeVariance = 0.5f;
-    public float elapsedTime = 0;
     public GameObject player;
     // Start is called before the first frame update
     void Start()
@@ -19,6 +18,8 @@ public class SkeletonShoot : MonoBehaviour
             gameObject.transform.Rotate(0, 180, 0, Space.Self);
             shootSpeed *= -1;
         }
+        shootPos = gameObject.transform;
+        time = 0.5f;
     }
 
     // Update is called once per frame
@@ -33,6 +34,5 @@ public class SkeletonShoot : MonoBehaviour
     void Shoot() {
         GameObject newBone = Instantiate(Bone, shootPos.position, Quaternion.identity);
         newBone.GetComponent<Rigidbody2D>().velocity = new Vector2(shootSpeed * Time.fixedDeltaTime, 0f);
-        StartCoroutine(newBone.GetComponent<BoneScript>().Timer());
     }
 }
