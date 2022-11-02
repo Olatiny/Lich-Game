@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 5035308469080684289}
   - component: {fileID: -3855330836190499196}
   m_Layer: 9
-  m_Name: Relic 1
+  m_Name: Relic 6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -76,7 +76,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 81b6f1b103b191b49b8b8fba1dbc0471, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 03f750470200e484f8940b1e01ae8b99, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -115,15 +115,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3250b02551fc2674784350c3e1df9a6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  relicName: Tattered Hat
-  relicLore: "You find a tattered backwards hat with blood stains on it. Stuffed
-    inside, you find part of a newspaper article that was torn off, it reads:  \tTHREE
-    MORE MISSING \tNovember 22, 2003 \tThree more missing persons cases in the town
-    of Pinecone arose over the weekend. Agness Bumble, age 29, Cassy Dawson, age
-    19, and John Statton, age 22, were all reported missing by family members or
-    friends. This creates a total number of twelve missing people from the small
-    town in the last year. The authorities are\u2026 (The rest of the article is
-    missing) "
+  relicName: Freezer
+  relicLore: "You find an old freezer and open it up. A foul stench hits your nose
+    and almost makes you faint. Your body settles for feeling like vomiting instead.
+    Inside the freezer is a sea of organs and other body parts floating in gallons
+    of blood. You find an etching on the lid of the freezer that seems to be a list.
+    You read the few legible lines that are there:  \t5) Decapitate using one clean
+    slice \t6) Marinate in the specified soda for six hours \t7) DO NOT FORGET TO
+    RE-CAPITATE THIS TIME!!! "
   playerTag: Player
 --- !u!114 &-3855330836190499196
 MonoBehaviour:
