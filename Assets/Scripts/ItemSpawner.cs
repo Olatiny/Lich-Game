@@ -40,7 +40,7 @@ public class ItemSpawner : MonoBehaviour
 
     public void StartFalling(){
         spawnedObjectHolder = new GameObject("spawned object holder");
-        spawnedObjectHolder.transform.parent = Camera.main.transform;
+        //spawnedObjectHolder.transform.parent = Camera.main.transform;
         ResetTimer();
     }
 

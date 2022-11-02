@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 5035308469080684289}
   - component: {fileID: -3855330836190499196}
   m_Layer: 9
-  m_Name: Relic 1
+  m_Name: Relic 7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -76,7 +76,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 81b6f1b103b191b49b8b8fba1dbc0471, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5e1af4e240865e3428263084b23889df, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -115,15 +115,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3250b02551fc2674784350c3e1df9a6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  relicName: Tattered Hat
-  relicLore: "You find a tattered backwards hat with blood stains on it. Stuffed
-    inside, you find part of a newspaper article that was torn off, it reads:  \tTHREE
-    MORE MISSING \tNovember 22, 2003 \tThree more missing persons cases in the town
-    of Pinecone arose over the weekend. Agness Bumble, age 29, Cassy Dawson, age
-    19, and John Statton, age 22, were all reported missing by family members or
-    friends. This creates a total number of twelve missing people from the small
-    town in the last year. The authorities are\u2026 (The rest of the article is
-    missing) "
+  relicName: Recipe Book
+  relicLore: "You pick up a recipe book that looks stained with blood. There are
+    two pages marked with bookmarks. The first page reads:  \tElixir of Extra Life
+    \tHow to make your life longer by instantly healing wounds and illness from taking
+    the life of others. Before starting this process make sure you have selected
+    the main liquid you want to utilize and convert into your Elixir of Extra Life
+    (Penciled in the margins you see the word \u201CSODA\u201D circled many times). 
+    \tThe second bookmark notes a place at the end of the chapter:  \tWhat to do
+    with the Remnants Left Over \tAfter the cooking is done, you will likely have
+    some (or many) body parts left over. One thing you could do with the organs is
+    further fermentation in jars as treasure pieces or kept for utilization in other
+    recipes. With the bones you could conduct reanimation and make skeletons do your
+    bidding (see chapter 9 of our accompanying magic tome, \u201CThe Dead and You:
+    How they can Still be Useful,\u201D 3rd edition). Leftover souls still around?
+    See our General Haunting 101 to make them useful! "
   playerTag: Player
 --- !u!114 &-3855330836190499196
 MonoBehaviour:

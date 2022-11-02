@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 5035308469080684289}
   - component: {fileID: -3855330836190499196}
   m_Layer: 9
-  m_Name: Relic 1
+  m_Name: Relic 5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -76,7 +76,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 81b6f1b103b191b49b8b8fba1dbc0471, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d4c376c61834e894a962e526bb7ac2e9, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -115,15 +115,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3250b02551fc2674784350c3e1df9a6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  relicName: Tattered Hat
-  relicLore: "You find a tattered backwards hat with blood stains on it. Stuffed
-    inside, you find part of a newspaper article that was torn off, it reads:  \tTHREE
-    MORE MISSING \tNovember 22, 2003 \tThree more missing persons cases in the town
-    of Pinecone arose over the weekend. Agness Bumble, age 29, Cassy Dawson, age
-    19, and John Statton, age 22, were all reported missing by family members or
-    friends. This creates a total number of twelve missing people from the small
-    town in the last year. The authorities are\u2026 (The rest of the article is
-    missing) "
+  relicName: Magic Tome
+  relicLore: "You find a magic tome titled: Flipping and Inverting Space Confined
+    within the Material World. A page is marked with a torn piece of newspaper. Upon
+    opening the book, you find that page is titled: \u201CChapter 5: Flipping a Large
+    Amount of Space Confined within a Boundary while keeping Entities Locked in their
+    Original Direction.\u201D The page goes on with a basic description of materials
+    needed such as candles, fresh goat\u2019s blood, and subsequently a description
+    of what will be found in the chapter. You take out the cut piece of newspaper
+    and find that it reads:  \tRESTORATION OF OLD MANSION IN THE TOWN OF PINECONE
+    \tOctober 5, 1995 \tA world-renowned architect by the name of Chadwick Vicer
+    has decided to retire right here in our little town to restore and make additions
+    to the old mansion on liberty hill. He has decided to begin construction within
+    the next year and said that for a short time after its completion he will open
+    the house to tours to the public to show off the mansion\u2019s beauty. In an
+    interview with Pinecone Post he declared \u201CThis great house should be restored
+    to its former glory, and all of the great citizens of Pinecone should get to
+    see this piece of town history shine again.\u201D "
   playerTag: Player
 --- !u!114 &-3855330836190499196
 MonoBehaviour:

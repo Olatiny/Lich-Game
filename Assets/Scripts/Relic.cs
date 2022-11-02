@@ -28,6 +28,7 @@ public class Relic : MonoBehaviour
     }
 
     public void OnTriggerEnter2D(Collider2D col){
+        Debug.Log("relic");
         if(col.gameObject.tag == playerTag){
             GameManager.Instance.FindRelic(this);
             Destroy(gameObject);
