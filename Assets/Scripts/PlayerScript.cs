@@ -15,6 +15,7 @@ public class PlayerScript : MonoBehaviour
     void Start()
     {
         body = GetComponent<Rigidbody2D>();
+        spawn.SetActive(false);
         //spawnBody = spawn.GetComponent<Rigidbody2D>();
     }
 
@@ -29,24 +30,29 @@ public class PlayerScript : MonoBehaviour
     //    }
     //}
 
+    public void StartFallingPlayer()
+    {
+        spawn.SetActive(true);
+    }
+
     // Update is called once per frame
     void FixedUpdate()
     {
         //bool moved = false;
         // if (GameManager.Instance.fallSpeed == 0)
         // {
-        //     GetComponent<Animator>().Play("PlayerStandingRight");
         //     return;
         // }
 
-        //if (!GameManager.Instance.CanMove())
-        //{
-        //    return;
-        //}
+        if (!GameManager.Instance.CanMove())
+        {
+            GetComponent<Animator>().Play("PlayerStandingRight");
+            return;
+        }
 
         GetComponent<Animator>().Play("Falling");
 
-        spawn.transform.position = new Vector3(transform.position.x, spawn.transform.position.y, spawn.transform.position.z);
+        spawn.transform.position = new Vector3(transform.position.x, transform.position.y + 15, spawn.transform.position.z);
 
         if (Input.GetKey(KeyCode.W) && transform.position.y <= 1.5)
         {
