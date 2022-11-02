@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 5035308469080684289}
   - component: {fileID: -3855330836190499196}
   m_Layer: 9
-  m_Name: Relic 1
+  m_Name: Relic 4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -76,7 +76,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 81b6f1b103b191b49b8b8fba1dbc0471, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 4841bf63beeb7bd4683e5b2e4cdf16fb, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -115,15 +115,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3250b02551fc2674784350c3e1df9a6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  relicName: Tattered Hat
-  relicLore: "You find a tattered backwards hat with blood stains on it. Stuffed
-    inside, you find part of a newspaper article that was torn off, it reads:  \tTHREE
-    MORE MISSING \tNovember 22, 2003 \tThree more missing persons cases in the town
-    of Pinecone arose over the weekend. Agness Bumble, age 29, Cassy Dawson, age
-    19, and John Statton, age 22, were all reported missing by family members or
-    friends. This creates a total number of twelve missing people from the small
-    town in the last year. The authorities are\u2026 (The rest of the article is
-    missing) "
+  relicName: Toilet
+  relicLore: "You find a toilet that was taken apart with lots of extra parts and
+    wires scattered around with some attached in weird places. You also see a blueprint
+    of a toilet on the ground with lots of crossed out sections seemingly of contraptions
+    on how to make a toilet open up and crush a person. It appears that a new design
+    with the ability to suck people in was preferred. After looking at some of the
+    toilet pieces more closely you see, stuck to the side of one of the pieces of
+    the toilet, a sticky note titled: restoration plans for foyer. You pick it up
+    and it reads:  \u2022\tRestore the chandeliers \u2022\tSend paintings to the
+    national art museum for restoration \u2022\tFix glass on windows on both sides
+    at the beginning of the foyer \u2022\tAdd in display pedestal \u2022\tBuy new
+    chalk \u2022\tReclaim wood for the molding \u2022\tCheck how many candles are
+    in storage \u2022\tRemember to pick up goat on the 7th "
   playerTag: Player
 --- !u!114 &-3855330836190499196
 MonoBehaviour:
