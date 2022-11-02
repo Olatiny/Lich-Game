@@ -42,6 +42,7 @@ public class GameManager : MonoBehaviour
     [SerializeField][Tooltip("the music manager script")]private MusicScript musScript;
     [SerializeField][Tooltip("the player particles script")]private CharacterParticles charParts;
     [SerializeField][Tooltip("the item spawner")]private ItemSpawner itemSpawn;
+    [SerializeField][Tooltip("the level resetter")]private ResetLevelScript resLevScript;
     [SerializeField] private GameObject player;
     [SerializeField] private GameObject killZone;
 
@@ -94,6 +95,7 @@ public class GameManager : MonoBehaviour
             itemSpawn.StopFalling();
         }
         SpawnInObjects();
+        resLevScript.ResetLevel();
         //Respawn player
         //do the camera reset stuff
         //reset level
@@ -136,7 +138,7 @@ public class GameManager : MonoBehaviour
         }
         Invoke("StartRotate", (playerMoveTime));
         rotating = true;
-        //musScript.FadeMenuMusic(); //-----UNCOMMENT
+        musScript.FadeMenuMusic(); //-----UNCOMMENT
         
     }
 
