@@ -96,12 +96,14 @@ public class MusicScript : MonoBehaviour
 
     public void PauseAdjust()
     {
-        StartCoroutine(FadeAudioSource.StartFade(music, .1f, menuVolume * 0.5f));
+        //StartCoroutine(FadeAudioSource.StartFade(music, .1f, menuVolume / 2));
+        music.volume = menuVolume / 2;
     }
 
     public void UnpauseAdjust()
     {
-        StartCoroutine(FadeAudioSource.StartFade(music, .1f, menuVolume));
+        //StartCoroutine(FadeAudioSource.StartFade(music, .1f, menuVolume));
+        music.volume = menuVolume;
     }
 
     public void MenuMusic()
@@ -113,10 +115,17 @@ public class MusicScript : MonoBehaviour
         music.Play();
     }
 
+    public void FadeMenuMusic()
+    {
+        // fades the music out
+        StartCoroutine(FadeAudioSource.StartFade(music, 2f, 0f));
+    }
+
     public void FallingMusic()
     {
         // lower the ambience slightly for the gameplay music
         StartCoroutine(FadeAudioSource.StartFade(ambience, 2f, 0.07f));
+
 
         music.clip = fallingSong;
         music.volume = spookzoomVolume;
@@ -156,18 +165,18 @@ public class MusicScript : MonoBehaviour
     public void RelicCollectSFX()
     {
         // maybe fade music out and then back in much more slowly
-        sfx.PlayOneShot(relicCollect); // can add volume thing later
+        sfx.PlayOneShot(relicCollect, 0.3f); // can add volume thing later
     }
 
     public void FallRumble()
     {
         // play ground tremble
-        sfx.PlayOneShot(groundRumble);
+        sfx.PlayOneShot(groundRumble, 0.75f);
     }
 
     public void FallScream()
     {
-        sfx.PlayOneShot(fallScream[UnityEngine.Random.Range(0, fallScream.Count)]);
+        sfx.PlayOneShot(fallScream[UnityEngine.Random.Range(0, fallScream.Count)], 0.2f);
     }
 
 

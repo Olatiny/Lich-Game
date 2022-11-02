@@ -93,9 +93,20 @@ public class GameManager : MonoBehaviour
         if(itemSpawn){
             itemSpawn.StopFalling();
         }
+        SpawnInObjects();
         //Respawn player
         //do the camera reset stuff
         //reset level
+    }
+
+    public void SpawnInObjects(){
+        foreach(string s in relicNames){
+            if(relics[s] == 1){
+                GameObject obj = (GameObject)Instantiate(relicObjectsMap[s], relicObjectsMap[s].GetComponent<Relic>().GetStartPos(), Quaternion.identity);
+                obj.GetComponent<FallingObject>().enabled = false;
+                obj.GetComponent<Relic>().DontCollide();
+            }
+        }
     }
 
     public void ResetScene(){
@@ -104,13 +115,14 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        InitializeScene();
+        
         relics = new Dictionary<string, int>();
         relicObjectsMap = new Dictionary<string, GameObject>();
         for(int i = 0; i < relicNames.Count; i++){
             relics.Add(relicNames[i],0);
             relicObjectsMap.Add(relicNames[i],relicObjects[i]);
         }
+        InitializeScene();
     }
 
     public void StartGame(){
@@ -124,6 +136,7 @@ public class GameManager : MonoBehaviour
         }
         Invoke("StartRotate", (playerMoveTime));
         rotating = true;
+        //musScript.FadeMenuMusic(); //-----UNCOMMENT
         
     }
 
@@ -241,6 +254,9 @@ public class GameManager : MonoBehaviour
             charParts.GainedRelic();
         }
         inDialog = true;
+        if(musScript){
+            musScript.PauseAdjust();
+        }
         canPause = false;
         menuMan.GainedRelic(relic);
 
@@ -312,6 +328,9 @@ public class GameManager : MonoBehaviour
 
     public void EndDialog(){
         inDialog = false;
+        if(musScript){
+            musScript.UnpauseAdjust();
+        }
         canPause = true;
         menuMan.EndDialog();
     }
@@ -323,5 +342,9 @@ public class GameManager : MonoBehaviour
             }
         }
         return null;
+    }
+
+    public MusicScript GetMusMan(){
+        return musScript;
     }
 }
