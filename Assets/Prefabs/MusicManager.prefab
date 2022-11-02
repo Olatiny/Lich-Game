@@ -76,9 +76,9 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 3bb92dffee8f8c04ea45911182b5293e, type: 3}
   deathSFX: {fileID: 8300000, guid: 81be4289916ccd94192a1edc86a723a2, type: 3}
   fallScream:
-  - {fileID: 8300000, guid: 190bd5b16f81e884b9e54237499102c6, type: 3}
-  - {fileID: 8300000, guid: 8d2e6a642ea3e0441aee45af3d5a3c6e, type: 3}
-  - {fileID: 8300000, guid: f02a56ed4c7963d4ca85ab2b2b76be23, type: 3}
+  - {fileID: 8300000, guid: 2aa7fe223a4df0546a93cdb367485bcf, type: 3}
+  - {fileID: 8300000, guid: bfe75949dd91d81459cc95f81143ec78, type: 3}
+  - {fileID: 8300000, guid: e2ee6386fa85c03459752c546d580f61, type: 3}
   groundRumble: {fileID: 8300000, guid: 936fba337b261644bbe56a9b2e8c08bf, type: 3}
 --- !u!1 &6814112791126815722
 GameObject:
