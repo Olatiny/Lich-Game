@@ -16,7 +16,7 @@ public class SkeletonShoot : MonoBehaviour
     {
         if (!player)
         {
-            //player = GameManager.Instance.GetPlayer();
+            player = GameManager.Instance.GetPlayer();
         }
         if (gameObject.transform.position.x > player.transform.position.x) {
             gameObject.transform.Rotate(0, 180, 0, Space.Self);

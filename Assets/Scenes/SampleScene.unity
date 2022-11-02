@@ -404,6 +404,14 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 730743205250224715, guid: a6a455b994ae96e46a298a47e3c0ca99, type: 3}
+      propertyPath: ghost
+      value: 
+      objectReference: {fileID: 1554687630084846973, guid: a057d824d467f2e428f24cdb4f6e8f8d, type: 3}
+    - target: {fileID: 730743205250224715, guid: a6a455b994ae96e46a298a47e3c0ca99, type: 3}
+      propertyPath: avgSpawnTime
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 730743205250224715, guid: a6a455b994ae96e46a298a47e3c0ca99, type: 3}
       propertyPath: leftSpawnBound
       value: 
       objectReference: {fileID: 426900022}
@@ -521,6 +529,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 519420032}
     m_Modifications:
+    - target: {fileID: 422811336281335783, guid: 7027b92ee00e10c42ab606d2b8535399, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -4.61
+      objectReference: {fileID: 0}
+    - target: {fileID: 422811336513026037, guid: 7027b92ee00e10c42ab606d2b8535399, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 4.33
+      objectReference: {fileID: 0}
     - target: {fileID: 427640725091341069, guid: 7027b92ee00e10c42ab606d2b8535399, type: 3}
       propertyPath: m_RootOrder
       value: 1

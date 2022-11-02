@@ -87,6 +87,7 @@ public class GameManager : MonoBehaviour
         UnPause();
         menuMan.OpenStartMenu();
         gameCamera.GetComponent<CameraScript>().SetRotation(startingRotation);
+        gameCamera.transform.position = new Vector3(0, 0, gameCamera.transform.position.z);
         player.transform.position = playerMenuStartPos;
         player.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
         if(charParts){
