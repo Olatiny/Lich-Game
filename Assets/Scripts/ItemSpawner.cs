@@ -67,6 +67,7 @@ public class ItemSpawner : MonoBehaviour
         if(spawnedObjectHolder){
             Destroy(spawnedObjectHolder);
         }
+        canGhostsSpawn = false;
     }
 
     void SpawnObject(){
