@@ -39,6 +39,11 @@ public class PlayerScript : MonoBehaviour
             return;
         }
 
+        //if (!GameManager.Instance.CanMove())
+        //{
+        //    return;
+        //}
+
         GetComponent<Animator>().Play("Falling");
 
         spawn.transform.position = new Vector3(transform.position.x, spawn.transform.position.y, spawn.transform.position.z);
