@@ -18,6 +18,9 @@ public class FallingObject : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        if(!GameManager.Instance.CanMove()){
+            return;
+        }
         transform.position = new Vector3(transform.position.x, transform.position.y + (moveSpeed * Time.fixedDeltaTime), transform.position.z);
         if(!render.isVisible){
             Destroy(gameObject);

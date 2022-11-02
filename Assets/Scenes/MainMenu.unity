@@ -20387,6 +20387,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 670914235902070469, guid: a6a455b994ae96e46a298a47e3c0ca99, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 1559738081, guid: 477433f1501f0d84ca0b207e9a829a6e, type: 3}
     - target: {fileID: 730743205250224715, guid: a6a455b994ae96e46a298a47e3c0ca99, type: 3}
       propertyPath: relicChance
       value: 100
@@ -20407,6 +20411,14 @@ PrefabInstance:
       propertyPath: rightSpawnBound
       value: 
       objectReference: {fileID: 2043600541}
+    - target: {fileID: 3334276373841078502, guid: a6a455b994ae96e46a298a47e3c0ca99, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 1559738081, guid: 477433f1501f0d84ca0b207e9a829a6e, type: 3}
+    - target: {fileID: 4786871938812183133, guid: a6a455b994ae96e46a298a47e3c0ca99, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 1559738081, guid: 477433f1501f0d84ca0b207e9a829a6e, type: 3}
     - target: {fileID: 5525250387867467856, guid: a6a455b994ae96e46a298a47e3c0ca99, type: 3}
       propertyPath: m_Name
       value: GameManager

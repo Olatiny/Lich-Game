@@ -15,12 +15,16 @@ public class MenuManager : MonoBehaviour
     [SerializeField][Tooltip("List of the health images for the menu")]private List<Image> healthImages;
     [SerializeField][Tooltip("the panel for dialog")]private GameObject dialogPanel;
     [SerializeField][Tooltip("the text object for dialog")]private TMP_Text dialogText;
+    [SerializeField][Tooltip("music manager")]private MusicScript musMan;
 
 
     // Start is called before the first frame update
     void Start()
     {
         OpenStartMenu();
+        if(!musMan){
+            musMan = GameManager.Instance.GetMusMan();
+        }
     }
 
     // Update is called once per frame
@@ -74,24 +78,29 @@ public class MenuManager : MonoBehaviour
     }
 
     public void ResumeGame(){
+        ButtonClicked();
         GameManager.Instance.UnPause();
     }
 
     public void PauseGame(){
+        ButtonClicked();
         GameManager.Instance.Pause();
     }
 
     public void QuitToMenu(){
+        ButtonClicked();
         GameManager.Instance.ResetScene();
         OpenStartMenu();
     }
 
     public void QuitGame(){
+        ButtonClicked();
         Application.Quit();
     }
 
     public void StartGame(){
         CloseStartMenu();
+        ButtonClicked();
         GameManager.Instance.StartGame();
     }
 
@@ -130,5 +139,11 @@ public class MenuManager : MonoBehaviour
     }
     public void EndDialog(){
         dialogPanel.SetActive(false);
+    }
+
+    public void ButtonClicked(){
+        if(musMan){
+            musMan.ButtonSFX();
+        }
     }
 }
