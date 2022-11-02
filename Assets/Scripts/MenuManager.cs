@@ -135,7 +135,7 @@ public class MenuManager : MonoBehaviour
 
     public void GainedRelic(Relic relic){
         dialogPanel.SetActive(true);
-        dialogText.text = relic.GetName();
+        dialogText.text = relic.GetLore();
     }
     public void EndDialog(){
         dialogPanel.SetActive(false);
