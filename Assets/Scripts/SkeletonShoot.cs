@@ -33,7 +33,6 @@ public class SkeletonShoot : MonoBehaviour
     }
     void Shoot() {
         GameObject newBone = Instantiate(Bone, shootPos.position, Quaternion.identity);
-        newBone.transform.parent = gameObject.transform;
         newBone.GetComponent<Rigidbody2D>().velocity = new Vector2(shootSpeed * Time.fixedDeltaTime, 0f);
     }
 }
