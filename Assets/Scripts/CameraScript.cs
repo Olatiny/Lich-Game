@@ -31,6 +31,7 @@ public class CameraScript : MonoBehaviour
             //Debug.Log("rotating " + t + ", " + (t / rotateTime) + ", " + zRot);
             yield return null;
         }
+        player.GetComponent<PlayerScript>().StartFallingPlayer();
         Debug.Log("end rotation");
     }
     public IEnumerator StartMove(Vector3 goalPos, float moveTime, bool includePlayer = true)

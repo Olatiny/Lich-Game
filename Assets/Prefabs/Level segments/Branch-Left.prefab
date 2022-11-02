@@ -1562,7 +1562,7 @@ GameObject:
   - component: {fileID: 3296244201829768815}
   m_Layer: 0
   m_Name: Branch-Left
-  m_TagString: Untagged
+  m_TagString: LevelSegment
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
