@@ -205,6 +205,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1322546574651669733}
   - component: {fileID: 4870353580988519089}
+  - component: {fileID: 5443862351801336071}
   m_Layer: 0
   m_Name: entrancediagRIGHT (2)
   m_TagString: Untagged
@@ -279,6 +280,36 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!60 &5443862351801336071
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1773519045429491001}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 4.8, y: 2.7}
+    newSize: {x: 4.8, y: 2.6962655}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 2
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 1.31, y: -1.35}
+      - {x: 1.2849796, y: -0.6406117}
+      - {x: 1.2749795, y: -0.5015093}
+      - {x: 0.76430523, y: -0.23879516}
+      - {x: 1.2772235, y: -1.3374901}
 --- !u!1 &4058582180563944138
 GameObject:
   m_ObjectHideFlags: 0
@@ -677,7 +708,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 420d7063b9b25d64284cbd533b257503, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  thisPath: {fileID: 8574099664161474128, guid: e9f86d612d5502a4c8ebf7a3169c9cdd, type: 3}
+  thisPath: {fileID: 8574099664161474128}
   spawn: {fileID: 7159846849752547177, guid: 2eed0981c46277c42b21a26f7dda4888, type: 3}
   offset: 0
   paths:
@@ -688,6 +719,10 @@ MonoBehaviour:
   - {fileID: 8574099664161474128, guid: 2909798840624924a83d0a4b622ced6e, type: 3}
   - {fileID: 8170062020495168502, guid: a478eb21f98d9cf4bb98379457771921, type: 3}
   - {fileID: 8170062020495168502, guid: be18059ff26979f45b1bc324eb0f4bd8, type: 3}
+  - {fileID: 3270294033118080572, guid: 1deaa80c268bc7d488ce19759b0f94f6, type: 3}
+  - {fileID: 3270294033118080572, guid: 35c1b2ad70ba28a4795a5427a1196c28, type: 3}
+  - {fileID: 4764988905973176504, guid: a738db6f19f1f2b4ca1f475f40760a80, type: 3}
+  - {fileID: 4764988905973176504, guid: 86ee9cece5a9dcb4399885a253e702fe, type: 3}
 --- !u!61 &8473448624538937375
 BoxCollider2D:
   m_ObjectHideFlags: 0

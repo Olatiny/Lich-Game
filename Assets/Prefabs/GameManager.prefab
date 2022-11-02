@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5525250387867467858}
   - component: {fileID: 5525250387867467857}
+  - component: {fileID: 730743205250224715}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -30,6 +31,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5525250387895889336}
+  - {fileID: 8307058379973851513}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -45,12 +47,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80717df56ce12ed4a9d565b15f717dbf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  relicNames: []
+  relicNames:
+  - Tattered Hat
+  - Crest of Arms
+  - VR Headset
+  - Toilet
+  - Magic Tome
+  - Freezer
+  - Recipe Book
+  relicObjects:
+  - {fileID: 5035308469080684293, guid: 49aeea2d9210370479f231a24fd22eea, type: 3}
+  - {fileID: 5035308469080684293, guid: 155f562f71aed694cab73c7ee9b21871, type: 3}
+  - {fileID: 5035308469080684293, guid: b073af972747e544395fa7a06056ebe4, type: 3}
+  - {fileID: 5035308469080684293, guid: e8e26d3906f431044928c07fcb0a1c35, type: 3}
+  - {fileID: 5035308469080684293, guid: 676df4ae6ed46cf4ead47cd086a20b68, type: 3}
+  - {fileID: 5035308469080684293, guid: 85bc3e6522ab34d4d8e898ef7f1236c0, type: 3}
+  - {fileID: 5035308469080684293, guid: 4db62bd2ba3f93e4ea87c66eba5af95c, type: 3}
   fallSpeed: 0
   startingFallSpeed: 1
   fallAcceleration: 0.1
-  gameStarted: 0
+  inDialog: 0
   paused: 0
+  rotating: 0
   currentState: 0
   gameCamera: {fileID: 0}
   startingRotation: {x: 0, y: 0, z: 0.70710677, w: -0.70710677}
@@ -60,7 +78,32 @@ MonoBehaviour:
   rotateTime: 1
   playerMoveTime: 1.7
   menuMan: {fileID: 5525250387895889319}
+  musScript: {fileID: 8307058379973851518}
+  charParts: {fileID: 0}
+  itemSpawn: {fileID: 730743205250224715}
   player: {fileID: 0}
+  killZone: {fileID: 0}
+--- !u!114 &730743205250224715
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5525250387867467856}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd96bbe71744892419af0311b0d17ced, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  smallHeal: {fileID: 8364885167712899844, guid: 464cf905ee5bdc843b89238f9dacf7c9, type: 3}
+  bigHeal: {fileID: 1244452639056659597, guid: 60982dc1a21f83e4a98b19bda1000566, type: 3}
+  bigHealChance: 30
+  relicChance: 5
+  leftSpawnBound: {fileID: 0}
+  rightSpawnBound: {fileID: 0}
+  avgSpawnTime: 10
+  spawnTimeVar: 1
+  spawnTimer: 0
 --- !u!1 &5525250388491001959
 GameObject:
   m_ObjectHideFlags: 0
@@ -467,6 +510,79 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!1001 &3303406743898922503
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 5525250387867467858}
+    m_Modifications:
+    - target: {fileID: 6814112791092029304, guid: e9752f82f45723247b0624be7b85f00b, type: 3}
+      propertyPath: m_Name
+      value: MusicManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 6814112791092029310, guid: e9752f82f45723247b0624be7b85f00b, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6814112791092029310, guid: e9752f82f45723247b0624be7b85f00b, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 367.50833
+      objectReference: {fileID: 0}
+    - target: {fileID: 6814112791092029310, guid: e9752f82f45723247b0624be7b85f00b, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 173.21564
+      objectReference: {fileID: 0}
+    - target: {fileID: 6814112791092029310, guid: e9752f82f45723247b0624be7b85f00b, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.55456424
+      objectReference: {fileID: 0}
+    - target: {fileID: 6814112791092029310, guid: e9752f82f45723247b0624be7b85f00b, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6814112791092029310, guid: e9752f82f45723247b0624be7b85f00b, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6814112791092029310, guid: e9752f82f45723247b0624be7b85f00b, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6814112791092029310, guid: e9752f82f45723247b0624be7b85f00b, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6814112791092029310, guid: e9752f82f45723247b0624be7b85f00b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6814112791092029310, guid: e9752f82f45723247b0624be7b85f00b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6814112791092029310, guid: e9752f82f45723247b0624be7b85f00b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: e9752f82f45723247b0624be7b85f00b, type: 3}
+--- !u!4 &8307058379973851513 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6814112791092029310, guid: e9752f82f45723247b0624be7b85f00b, type: 3}
+  m_PrefabInstance: {fileID: 3303406743898922503}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &8307058379973851518 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6814112791092029305, guid: e9752f82f45723247b0624be7b85f00b, type: 3}
+  m_PrefabInstance: {fileID: 3303406743898922503}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0bd6198332bb6494bb3aeeea0d3da531, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &4809695216091741249
 PrefabInstance:
   m_ObjectHideFlags: 0

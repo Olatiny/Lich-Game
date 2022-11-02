@@ -8,7 +8,9 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField][Tooltip("the player's current health")]private int currentHealth;
     [SerializeField][Tooltip("the player's i frame duration. How long the player is invincible after being hurt")]private float iFrames;
     [SerializeField][Tooltip("the player's current iFrame timer. Shows how much time the player has left until they can take damage again")]private float iFrameTimer;
-    [SerializeField][Tooltip("the damaging layer which will be used to hurt the player on collision")]private int DamageLayer;
+    [SerializeField][Tooltip("the damaging layer which will be used to hurt the player on collision")]private string DamageLayer = "Damage";
+    [SerializeField][Tooltip("the healing layer which will be used to heal the player on collision")]private string HealLayer = "Heal";
+    [SerializeField][Tooltip("the damage particle effect which should be played when the player is hit")]private GameObject hurtParticles;
     
     void Start(){
         currentHealth = maxHealth;
@@ -24,12 +26,13 @@ public class PlayerHealth : MonoBehaviour
     }
 
     public void SetHealth(int newHealth){
-        currentHealth = newHealth;
+        currentHealth = Mathf.Min(newHealth,maxHealth);
     }
 
     public void RestoreHealth(int healthIncrease){
         GameManager.Instance.GainedHealth(currentHealth,healthIncrease);
         currentHealth = Mathf.Min(currentHealth + healthIncrease, maxHealth);
+        Debug.Log("health gain");
     }
 
     public void Damage(int damageTaken){
@@ -49,7 +52,7 @@ public class PlayerHealth : MonoBehaviour
     }
 
     public void OnCollisionEnter2D(Collision2D col){
-        if(col.collider.gameObject.layer == DamageLayer){
+        if(col.collider.gameObject.layer == LayerMask.NameToLayer(DamageLayer)){
             Damage(1);
         }
     }
@@ -57,9 +60,17 @@ public class PlayerHealth : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D col){
         Debug.Log("trigger");
-        if(col.gameObject.layer == DamageLayer){
+        if(col.gameObject.layer == LayerMask.NameToLayer(DamageLayer)){
             Debug.Log("damage trigger");
             Damage(1);
+            Destroy(col.gameObject);
+        }
+        else if(col.gameObject.layer == LayerMask.NameToLayer(HealLayer)){
+            Debug.Log("heal trigger");
+            if(col.gameObject.GetComponent<HealItem>()){
+                RestoreHealth(col.gameObject.GetComponent<HealItem>().GetHealth());
+            }
+            Destroy(col.gameObject);
         }
     }
 

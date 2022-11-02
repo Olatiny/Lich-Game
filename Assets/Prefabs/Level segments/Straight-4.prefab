@@ -677,7 +677,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 420d7063b9b25d64284cbd533b257503, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  thisPath: {fileID: 8574099664161474128, guid: e9f86d612d5502a4c8ebf7a3169c9cdd, type: 3}
+  thisPath: {fileID: 8574099664161474128}
   spawn: {fileID: 7159846849752547177, guid: 2eed0981c46277c42b21a26f7dda4888, type: 3}
   offset: 0
   paths:
@@ -688,6 +688,10 @@ MonoBehaviour:
   - {fileID: 8574099664161474128, guid: 2909798840624924a83d0a4b622ced6e, type: 3}
   - {fileID: 8170062020495168502, guid: a478eb21f98d9cf4bb98379457771921, type: 3}
   - {fileID: 8170062020495168502, guid: be18059ff26979f45b1bc324eb0f4bd8, type: 3}
+  - {fileID: 3270294033118080572, guid: 1deaa80c268bc7d488ce19759b0f94f6, type: 3}
+  - {fileID: 3270294033118080572, guid: 35c1b2ad70ba28a4795a5427a1196c28, type: 3}
+  - {fileID: 4764988905973176504, guid: a738db6f19f1f2b4ca1f475f40760a80, type: 3}
+  - {fileID: 4764988905973176504, guid: 86ee9cece5a9dcb4399885a253e702fe, type: 3}
 --- !u!61 &8473448624538937375
 BoxCollider2D:
   m_ObjectHideFlags: 0
