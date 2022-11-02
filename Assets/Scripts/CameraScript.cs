@@ -69,4 +69,5 @@ public class CameraScript : MonoBehaviour
         //Debug.Log("start: " + start + "\nend: " + end + "resultPos: " + resultPos + "");
         return start + resultPos + rand;
     }
+
 }

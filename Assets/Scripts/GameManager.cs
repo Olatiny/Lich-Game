@@ -9,7 +9,9 @@ public class GameManager : MonoBehaviour
     
 
     [SerializeField][Tooltip("a list of the names of all of the relics")]private List<string> relicNames;
+    [SerializeField][Tooltip("a list of the names of all of the relics")]private List<GameObject> relicObjects;
     [SerializeField][Tooltip("a map of all relics and if they've been found. 0 = not found, 1 = found")]private Dictionary<string,int> relics;
+    [SerializeField][Tooltip("a map of all relics and if they've been found. 0 = not found, 1 = found")]private Dictionary<string,GameObject> relicObjectsMap;
     
     [Header("falling fields")]
     [SerializeField][Tooltip("current falling speed")]public float fallSpeed;
@@ -17,10 +19,11 @@ public class GameManager : MonoBehaviour
     [SerializeField][Tooltip("the rate at which the character fall speed increases per second")]public float fallAcceleration;
 
     [Header("game state fields")]
-    [SerializeField]private bool gameStarted;
+    [SerializeField]private bool inDialog;
     /**if the game is currently paused*/
     [SerializeField] private bool paused;
     private bool canPause = true;
+    [SerializeField]private bool rotating = false;
     [SerializeField]public enum gameState {menu, falling, loot_room, die};
     [SerializeField]public gameState currentState;
     
@@ -36,7 +39,11 @@ public class GameManager : MonoBehaviour
 
     [Header("manager fields")]
     [SerializeField][Tooltip("the menu manager object")]private MenuManager menuMan;
+    [SerializeField][Tooltip("the music manager script")]private MusicScript musScript;
+    [SerializeField][Tooltip("the player particles script")]private CharacterParticles charParts;
+    [SerializeField][Tooltip("the item spawner")]private ItemSpawner itemSpawn;
     [SerializeField] private GameObject player;
+    [SerializeField] private GameObject killZone;
 
     [Tooltip("Current Game Manager")]
     private static GameManager _instance;
@@ -69,16 +76,23 @@ public class GameManager : MonoBehaviour
     }
     
     void InitializeScene(){
+        killZone.SetActive(false);
         ChangeState(gameState.menu);
+        rotating = false;
         fallSpeed = 0f;
         score = 0;
-        gameStarted = false;
+        inDialog = false;
         UnPause();
         menuMan.OpenStartMenu();
         gameCamera.GetComponent<CameraScript>().SetRotation(startingRotation);
         player.transform.position = playerMenuStartPos;
         player.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
-
+        if(charParts){
+            charParts.Reset();
+        }
+        if(itemSpawn){
+            itemSpawn.StopFalling();
+        }
         //Respawn player
         //do the camera reset stuff
         //reset level
@@ -91,6 +105,12 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         InitializeScene();
+        relics = new Dictionary<string, int>();
+        relicObjectsMap = new Dictionary<string, GameObject>();
+        for(int i = 0; i < relicNames.Count; i++){
+            relics.Add(relicNames[i],0);
+            relicObjectsMap.Add(relicNames[i],relicObjects[i]);
+        }
     }
 
     public void StartGame(){
@@ -99,22 +119,47 @@ public class GameManager : MonoBehaviour
         //rotate camera
         Debug.Log("start falling");
          StartCoroutine(Camera.main.GetComponent<CameraScript>().StartMove(playerStartPos, playerMoveTime));
+         if(charParts){
+            charParts.StartFloating();
+        }
         Invoke("StartRotate", (playerMoveTime));
+        rotating = true;
         
     }
 
     private void StartRotate(){
         StartCoroutine(Camera.main.GetComponent<CameraScript>().StartRotate(finalRotation, rotateTime));
+        if(charParts){
+            charParts.StartRotating();
+        }
+        if(musScript){
+            musScript.FallRumble();
+        }
         Invoke("StartFalling", (rotateTime));
+        
     }
 
     private void StartFalling(){
         fallSpeed = startingFallSpeed;
         ChangeState(gameState.falling);
+        if(charParts){
+            charParts.StartFalling();
+        }
+        if(itemSpawn){
+            itemSpawn.StartFalling();
+        }
+        if(musScript){
+            musScript.FallScream();
+        }
+        rotating = false;
+        killZone.SetActive(true);
     }
 
 
     public void TogglePause(){
+        if(!canPause){
+            return;
+        }
         if(paused){
             UnPause();
         }
@@ -126,13 +171,17 @@ public class GameManager : MonoBehaviour
     public void Pause(){
         paused = true;
             menuMan.OpenPauseMenu();
-            //maybe change
+            if(musScript){
+                musScript.PauseAdjust();
+            }
             Time.timeScale = 0f;
     }
     public void UnPause(){
         paused = false;
             menuMan.ClosePauseMenu();
-            //maybe change
+            if(musScript){
+                musScript.UnpauseAdjust();
+            }
             Time.timeScale = 1f;
     }
 
@@ -140,17 +189,22 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if(!paused){
+        if(!paused && !inDialog){
             if(currentState == gameState.falling){
                 fallSpeed += fallAcceleration * Time.fixedDeltaTime;
                 score += 1;
                 menuMan.UpdateScore(score);
             }
         }
+        if(inDialog){
+            if(Input.GetKey(KeyCode.Space)){
+                EndDialog();
+            }
+        }
     }
 
     public void ChangeState(gameState newState){
-        //call audio manager with the new state
+        musScript.UpdateMusic(newState);
         currentState = newState;
     }
 
@@ -177,15 +231,20 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void FindRelic(string name){
-        if(!relics.ContainsKey(name)){
-            Debug.LogError("TRIED TO REMOVE NOTEXISTENT RELIC " + name);
+    public void FindRelic(Relic relic){
+        if(!relics.ContainsKey(relic.GetName())){
+            Debug.LogError("TRIED TO FIND NOTEXISTENT RELIC " + relic.GetName());
             return;
         }
-        relics[name] = 1;
+        relics[relic.GetName()] = 1;
+        if(charParts){
+            charParts.GainedRelic();
+        }
+        inDialog = true;
+        canPause = false;
+        menuMan.GainedRelic(relic);
 
     }
-
     void SavePrefs(){
         foreach (string item in relicNames)
         {
@@ -205,7 +264,9 @@ public class GameManager : MonoBehaviour
     }
 
     public void Die(){
-        ChangeState(gameState.die);
+        if(musScript){
+            ChangeState(gameState.die);
+        }
         menuMan.OpenGameOverMenu();
     }
 
@@ -215,9 +276,52 @@ public class GameManager : MonoBehaviour
 
     public void TookDamage(int currentHealth, int damageTaken){
         menuMan.TookDamage(currentHealth,damageTaken);
+        if(charParts){
+            charParts.Hurt();
+        }
+        if(musScript){
+            musScript.DamageSFX();
+        }
     }
 
     public void GainedHealth(int currentHealth, int healthGained){
+        Debug.Log("gained health GM");
         menuMan.GainedHealth(currentHealth,healthGained);
+        if(charParts){
+            charParts.GainedHealth();
+        }
+        if(musScript){
+            musScript.HealthSFX();
+        }
+    }
+
+    public bool CanMove(){
+        return !paused && !inDialog && !rotating && (currentState == gameState.falling || currentState == gameState.loot_room);
+    }
+
+    public void EnterLootRoom(){
+        ChangeState(gameState.loot_room);
+        //make the character start using gravity instead of falling room.
+        player.GetComponent<Rigidbody2D>().gravityScale = 1;
+    }
+    public void ExitLootRoom(){
+        ChangeState(gameState.falling);
+        //make the character stop using gravity
+        player.GetComponent<Rigidbody2D>().gravityScale = 0;
+    }
+
+    public void EndDialog(){
+        inDialog = false;
+        canPause = true;
+        menuMan.EndDialog();
+    }
+
+    public GameObject GetRelicToSpawn(){
+        foreach(string i in relicNames){
+            if(relics[i] == 0){
+                return relicObjectsMap[i];
+            }
+        }
+        return null;
     }
 }
