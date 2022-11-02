@@ -17,18 +17,14 @@ public class BoneScript : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (gameObject) {
-            gameObject.transform.Rotate(0, 0, 5, Space.Self);
-        }
+        gameObject.transform.Rotate(0, 0, 5, Space.Self);
     }
 
     public void OnCollisionEnter2D(Collision2D other) {
         Die();
     }
     public void Die() {
-        if (gameObject) {
-            Destroy(gameObject);
-        }
+        Destroy(gameObject);
     }
     public IEnumerator Timer() {
         yield return new WaitForSeconds(killTime);
