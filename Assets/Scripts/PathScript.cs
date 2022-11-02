@@ -33,9 +33,14 @@ public class PathScript : MonoBehaviour
 
             GameObject re;
 
-            if (name.Contains("Straight")) {
+            if (name.Contains("Slant"))
+            {
+                re = Instantiate(newObj, transform.GetChild(1).position, thisPath.transform.rotation);
+            }
+            else if (name.Contains("Straight")) {
                 re = Instantiate(newObj, transform.GetChild(2).position, thisPath.transform.rotation);
-            } else
+            }
+            else
             {
                 re = Instantiate(newObj, transform.GetChild(6).gameObject.GetComponent<PathTransitionScript>().WhichConnector().transform.position, thisPath.transform.rotation);
             }
