@@ -14,7 +14,7 @@ public class PathScript : MonoBehaviour
     {
         //paths.Count - 1
         int idx = Random.Range(0, paths.Count);
-        idx = paths.Count - 1;
+        //idx = paths.Count - 2;
         //Debug.Log("Path: " + idx);
         return paths[idx];
     }

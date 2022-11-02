@@ -75,6 +75,14 @@ public class PlayerScript : MonoBehaviour
             //moved = true;
         }
 
+        //if (transform.position.x > cam.transform.position.x + 8)
+        //{
+
+        //} else if (transform.position.x < cam.transform.position.x - 8)
+        //{
+
+        //}
+
         cam.transform.position = new Vector3(transform.position.x, cam.transform.position.y, cam.transform.position.z);
 
         //if (transform.position.x <= cam.transform.position.x - 5)
