@@ -5,16 +5,43 @@ using UnityEngine;
 
 public class MusicScript : MonoBehaviour
 {
+    /** MUSIC SCRIPT "API"
+     * UpdateMusic(gameState);  updates the audio based on gamestate change
+     * PauseAdjust();           ducks the music down when paused        (ONLY USE WHILE IN FALLING GAMESTATE)
+     * UnpauseAdjust();         brings the music back up on unpause     (ONLY USE WHILE IN FALLING GAMESTATE)
+     * HealthSFX();             plays health sound effect
+     * DamageSFX();             ...figure it out
+     * EnemyThrowSFX();         ...
+     * ButtonSFX();             ...
+     * RelicCollectSFX();       ...
+     * 
+     * FallRumble();            plays ground tremble in cutscene then... 
+     * FallScream();            plays cartoon ahhhhhh once the falling starts
+     */
+
     public AudioSource ambience; // has its clip stored inside
     public AudioSource music;
     public AudioSource sfx;
 
     public AudioClip menuSong;
+    public float menuVolume = 0.17f;
+
     public AudioClip fallingSong;
+    public float spookzoomVolume = 0.17f;
 
     public AudioClip deathCue; // all sfx will be played as oneshots through sfx
-    [SerializeField]
+
+    public AudioClip relicCollect;
+
     public List<AudioClip> healthCollect;
+    public List<AudioClip> damageNoise;
+    public List<AudioClip> enemyThrow;
+    public List<AudioClip> buttonClick;
+
+    public AudioClip deathSFX;
+
+    public List<AudioClip> fallScream;
+    public AudioClip groundRumble; // maybe make this a list too
 
     // Start is called before the first frame update
     void Start()
@@ -29,7 +56,7 @@ public class MusicScript : MonoBehaviour
         // fade the ambience up VERY SLOW
         StartCoroutine(FadeAudioSource.StartFade(ambience, 3.5f, 0.15f)); // does nothing if it is already high
 
-        music.volume = 0.2f;
+        music.volume = menuVolume;
         music.clip = menuSong;
         music.Play();
     }
@@ -67,6 +94,16 @@ public class MusicScript : MonoBehaviour
         }
     }
 
+    public void PauseAdjust()
+    {
+        StartCoroutine(FadeAudioSource.StartFade(music, .1f, menuVolume * 0.5f));
+    }
+
+    public void UnpauseAdjust()
+    {
+        StartCoroutine(FadeAudioSource.StartFade(music, .1f, menuVolume));
+    }
+
     public void MenuMusic()
     {
         // fade the ambience up
@@ -82,7 +119,7 @@ public class MusicScript : MonoBehaviour
         StartCoroutine(FadeAudioSource.StartFade(ambience, 2f, 0.07f));
 
         music.clip = fallingSong;
-        music.volume = 0.3f;
+        music.volume = spookzoomVolume;
         music.Play();
 
     }
@@ -96,12 +133,44 @@ public class MusicScript : MonoBehaviour
         
         // AND play the death cue
         sfx.PlayOneShot(deathCue, 0.2f);
+        sfx.PlayOneShot(deathSFX, 0.1f);
     }
+
 
     public void HealthSFX()
     {
         sfx.PlayOneShot(healthCollect[UnityEngine.Random.Range(0, healthCollect.Count)]);
     }
+    public void DamageSFX()
+    {
+        sfx.PlayOneShot(damageNoise[UnityEngine.Random.Range(0, damageNoise.Count)]);
+    }
+    public void EnemyThrowSFX()
+    {
+        sfx.PlayOneShot(enemyThrow[UnityEngine.Random.Range(0, enemyThrow.Count)]);
+    }
+    public void ButtonSFX()
+    {
+        sfx.PlayOneShot(buttonClick[UnityEngine.Random.Range(0, buttonClick.Count)]);
+    }
+    public void RelicCollectSFX()
+    {
+        // maybe fade music out and then back in much more slowly
+        sfx.PlayOneShot(relicCollect); // can add volume thing later
+    }
+
+    public void FallRumble()
+    {
+        // play ground tremble
+        sfx.PlayOneShot(groundRumble);
+    }
+
+    public void FallScream()
+    {
+        sfx.PlayOneShot(fallScream[UnityEngine.Random.Range(0, fallScream.Count)]);
+    }
+
+
 }
 
 
