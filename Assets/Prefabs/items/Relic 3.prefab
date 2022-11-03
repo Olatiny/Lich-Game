@@ -136,6 +136,8 @@ MonoBehaviour:
     lock all doors and windows to your home. Parents, make sure you know where your
     kids are and what they are doing. Everyone look out for each other during these
     trying times.\u201D  "
+  relicMenuSpawnPos: {x: -1, y: 1, z: 0}
+  canCollide: 1
   playerTag: Player
 --- !u!114 &-3855330836190499196
 MonoBehaviour:

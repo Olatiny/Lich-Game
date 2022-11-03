@@ -132,6 +132,8 @@ MonoBehaviour:
     interview with Pinecone Post he declared \u201CThis great house should be restored
     to its former glory, and all of the great citizens of Pinecone should get to
     see this piece of town history shine again.\u201D "
+  relicMenuSpawnPos: {x: 1, y: 1, z: 0}
+  canCollide: 1
   playerTag: Player
 --- !u!114 &-3855330836190499196
 MonoBehaviour:

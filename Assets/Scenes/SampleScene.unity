@@ -412,8 +412,12 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1554687630084846973, guid: a057d824d467f2e428f24cdb4f6e8f8d, type: 3}
     - target: {fileID: 730743205250224715, guid: a6a455b994ae96e46a298a47e3c0ca99, type: 3}
-      propertyPath: avgSpawnTime
+      propertyPath: relicChance
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 730743205250224715, guid: a6a455b994ae96e46a298a47e3c0ca99, type: 3}
+      propertyPath: avgSpawnTime
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 730743205250224715, guid: a6a455b994ae96e46a298a47e3c0ca99, type: 3}
       propertyPath: leftSpawnBound
@@ -461,7 +465,7 @@ PrefabInstance:
       objectReference: {fileID: 16546115}
     - target: {fileID: 5525250387867467857, guid: a6a455b994ae96e46a298a47e3c0ca99, type: 3}
       propertyPath: fallAcceleration
-      value: 0
+      value: 0.01
       objectReference: {fileID: 0}
     - target: {fileID: 5525250387867467857, guid: a6a455b994ae96e46a298a47e3c0ca99, type: 3}
       propertyPath: startingFallSpeed

@@ -279,7 +279,7 @@ public class GameManager : MonoBehaviour
     }
 
     public float GetFallSpeed(){
-        if(paused){
+        if(!CanMove()){
             return 0;
         }
         return fallSpeed;

@@ -128,6 +128,8 @@ MonoBehaviour:
     at the beginning of the foyer \u2022\tAdd in display pedestal \u2022\tBuy new
     chalk \u2022\tReclaim wood for the molding \u2022\tCheck how many candles are
     in storage \u2022\tRemember to pick up goat on the 7th "
+  relicMenuSpawnPos: {x: 0, y: 1, z: 0}
+  canCollide: 1
   playerTag: Player
 --- !u!114 &-3855330836190499196
 MonoBehaviour:

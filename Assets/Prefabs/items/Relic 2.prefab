@@ -122,6 +122,8 @@ MonoBehaviour:
     bottles \t- get empty jars \t- buy more soda \t- buy cheese grater \t- buy lots
     and lots of ice \t- buy new pair of butcher\u2019s gloves \t- sharpen butcher\u2019s
     knife "
+  relicMenuSpawnPos: {x: -2, y: 1, z: 0}
+  canCollide: 1
   playerTag: Player
 --- !u!114 &-3855330836190499196
 MonoBehaviour:
