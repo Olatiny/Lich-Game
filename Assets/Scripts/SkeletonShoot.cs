@@ -14,10 +14,14 @@ public class SkeletonShoot : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (gameObject.transform.position.x > player.transform.position.x) {
-            gameObject.transform.Rotate(0, 180, 0, Space.Self);
-            shootSpeed *= -1;
-        }
+        //if (!player)
+        //{
+        //    player = GameManager.Instance.GetPlayer();
+        //}
+        //if (gameObject.transform.position.x > player.transform.position.x) {
+        //    gameObject.transform.Rotate(0, 180, 0, Space.Self);
+        //    shootSpeed *= -1;
+        //}   
         shootPos = gameObject.transform;
         time = 0.5f;
     }
@@ -32,7 +36,13 @@ public class SkeletonShoot : MonoBehaviour
         time -= Time.fixedDeltaTime;
     }
     void Shoot() {
-        GameObject newBone = Instantiate(Bone, shootPos.position, Quaternion.identity);
-        newBone.GetComponent<Rigidbody2D>().velocity = new Vector2(shootSpeed * Time.fixedDeltaTime, 0f);
+        if (GameManager.Instance.CanMove())
+        {
+
+            GameManager.Instance.GetMusMan().EnemyThrowSFX();
+            GameObject newBone = Instantiate(Bone, shootPos.position, Quaternion.identity);
+            newBone.transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, gameObject.transform.position.z);
+            newBone.GetComponent<Rigidbody2D>().velocity = new Vector2(shootSpeed * Time.fixedDeltaTime, 0f);
+        }
     }
 }

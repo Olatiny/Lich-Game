@@ -2179,6 +2179,9 @@ MonoBehaviour:
   - {fileID: 7852803179628287143}
   - {fileID: 5472129327870587524}
   - {fileID: 58857932974243356}
+  dialogPanel: {fileID: 0}
+  dialogText: {fileID: 0}
+  musMan: {fileID: 0}
 --- !u!1 &1014112168232092854
 GameObject:
   m_ObjectHideFlags: 0
@@ -3981,8 +3984,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 20
+  m_fontSizeBase: 20
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18

@@ -130,6 +130,8 @@ MonoBehaviour:
     bidding (see chapter 9 of our accompanying magic tome, \u201CThe Dead and You:
     How they can Still be Useful,\u201D 3rd edition). Leftover souls still around?
     See our General Haunting 101 to make them useful! "
+  relicMenuSpawnPos: {x: 3, y: 1, z: 0}
+  canCollide: 1
   playerTag: Player
 --- !u!114 &-3855330836190499196
 MonoBehaviour:

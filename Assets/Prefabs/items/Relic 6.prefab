@@ -123,6 +123,8 @@ MonoBehaviour:
     You read the few legible lines that are there:  \t5) Decapitate using one clean
     slice \t6) Marinate in the specified soda for six hours \t7) DO NOT FORGET TO
     RE-CAPITATE THIS TIME!!! "
+  relicMenuSpawnPos: {x: 2, y: 1, z: 0}
+  canCollide: 1
   playerTag: Player
 --- !u!114 &-3855330836190499196
 MonoBehaviour:

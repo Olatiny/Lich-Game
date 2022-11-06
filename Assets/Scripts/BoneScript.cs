@@ -19,7 +19,7 @@ public class BoneScript : MonoBehaviour
         gameObject.transform.Rotate(0, 0, 5, Space.Self);
     }
 
-    public void OnCollisionEnter2D(Collision2D other) {
+    public void OnTriggerEnter2D(Collider2D other) {
         Die();
     }
     public void Die() {

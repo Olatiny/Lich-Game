@@ -18,6 +18,7 @@ public class GameManager : MonoBehaviour
     [SerializeField][Tooltip("the fall speed at the start of the game")]public float startingFallSpeed;
     [SerializeField][Tooltip("the rate at which the character fall speed increases per second")]public float fallAcceleration;
 
+
     [Header("game state fields")]
     [SerializeField]private bool inDialog;
     /**if the game is currently paused*/
@@ -42,6 +43,7 @@ public class GameManager : MonoBehaviour
     [SerializeField][Tooltip("the music manager script")]private MusicScript musScript;
     [SerializeField][Tooltip("the player particles script")]private CharacterParticles charParts;
     [SerializeField][Tooltip("the item spawner")]private ItemSpawner itemSpawn;
+    [SerializeField][Tooltip("the level resetter")]private ResetLevelScript resLevScript;
     [SerializeField] private GameObject player;
     [SerializeField] private GameObject killZone;
 
@@ -85,6 +87,7 @@ public class GameManager : MonoBehaviour
         UnPause();
         menuMan.OpenStartMenu();
         gameCamera.GetComponent<CameraScript>().SetRotation(startingRotation);
+        gameCamera.transform.position = new Vector3(0, 0, gameCamera.transform.position.z);
         player.transform.position = playerMenuStartPos;
         player.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
         if(charParts){
@@ -93,9 +96,23 @@ public class GameManager : MonoBehaviour
         if(itemSpawn){
             itemSpawn.StopFalling();
         }
+        SpawnInObjects();
+        if(resLevScript){
+            resLevScript.ResetLevel();
+        }
         //Respawn player
         //do the camera reset stuff
         //reset level
+    }
+
+    public void SpawnInObjects(){
+        foreach(string s in relicNames){
+            if(relics[s] == 1){
+                GameObject obj = (GameObject)Instantiate(relicObjectsMap[s], relicObjectsMap[s].GetComponent<Relic>().GetStartPos(), Quaternion.identity);
+                obj.GetComponent<FallingObject>().enabled = false;
+                obj.GetComponent<Relic>().DontCollide();
+            }
+        }
     }
 
     public void ResetScene(){
@@ -104,13 +121,14 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        InitializeScene();
+        
         relics = new Dictionary<string, int>();
         relicObjectsMap = new Dictionary<string, GameObject>();
         for(int i = 0; i < relicNames.Count; i++){
             relics.Add(relicNames[i],0);
             relicObjectsMap.Add(relicNames[i],relicObjects[i]);
         }
+        InitializeScene();
     }
 
     public void StartGame(){
@@ -124,6 +142,7 @@ public class GameManager : MonoBehaviour
         }
         Invoke("StartRotate", (playerMoveTime));
         rotating = true;
+        musScript.FadeMenuMusic(); //-----UNCOMMENT
         
     }
 
@@ -241,6 +260,9 @@ public class GameManager : MonoBehaviour
             charParts.GainedRelic();
         }
         inDialog = true;
+        if(musScript){
+            musScript.PauseAdjust();
+        }
         canPause = false;
         menuMan.GainedRelic(relic);
 
@@ -257,7 +279,7 @@ public class GameManager : MonoBehaviour
     }
 
     public float GetFallSpeed(){
-        if(paused){
+        if(!CanMove()){
             return 0;
         }
         return fallSpeed;
@@ -312,6 +334,9 @@ public class GameManager : MonoBehaviour
 
     public void EndDialog(){
         inDialog = false;
+        if(musScript){
+            musScript.UnpauseAdjust();
+        }
         canPause = true;
         menuMan.EndDialog();
     }
@@ -323,5 +348,13 @@ public class GameManager : MonoBehaviour
             }
         }
         return null;
+    }
+
+    public MusicScript GetMusMan(){
+        return musScript;
+    }
+
+    public GameObject GetPlayer(){
+        return player;
     }
 }

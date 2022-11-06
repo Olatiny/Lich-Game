@@ -124,6 +124,8 @@ MonoBehaviour:
     friends. This creates a total number of twelve missing people from the small
     town in the last year. The authorities are\u2026 (The rest of the article is
     missing) "
+  relicMenuSpawnPos: {x: -3, y: 1, z: 0}
+  canCollide: 1
   playerTag: Player
 --- !u!114 &-3855330836190499196
 MonoBehaviour:
